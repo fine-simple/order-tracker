@@ -1,0 +1,37 @@
+import { useId } from "react";
+
+export default function Summary({ persons, tax, changeTax }) {
+  const taxInputId = useId();
+
+  const subTotal = Object.values(persons).reduce(
+    (acc, orders) =>
+      Object.values(orders).reduce(
+        (acc, order) => acc + order.price * order.amount,
+        0
+      ) + acc,
+    0
+  );
+
+  const taxChangeHandler = e => {
+    changeTax(e.target.value / 100);
+  };
+
+  const total = subTotal * (1 + tax);
+
+  return (
+    <article>
+      <h2>Summary</h2>
+      <h4>Sub-total: {subTotal}</h4>
+      <label htmlFor={taxInputId}>"Tax: </label>
+      <input
+        id={taxInputId}
+        onChange={taxChangeHandler}
+        className="tax"
+        name="tax"
+        type="number"
+      />
+      <span> %</span>
+      <h4>Total: {total.toFixed(2)}</h4>
+    </article>
+  );
+}

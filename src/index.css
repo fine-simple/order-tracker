@@ -1,0 +1,140 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #212121;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.persons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  max-height: 50vh;
+  max-height: 50dvh;
+  overflow: auto;
+}
+
+.card:hover {
+  box-shadow: rgba(255, 255, 255, 0.35) 0px -2px 6px 0px inset;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+hr {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.persons h3 {
+  text-transform: capitalize;
+  overflow: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #2e2e2e;
+  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.card footer {
+  margin-top: auto;
+}
+
+.card ul {
+  max-height: 50%;
+  overflow: auto;
+}
+
+.card * {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.empty-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.btn-add {
+  font-size: 1rem;
+  padding: 0.3rem;
+  margin: 1rem auto;
+}
+
+.tax {
+  width: fit-content;
+  margin-left: 0.5rem;
+  font-size: medium;
+}
+
+@media screen and (max-width: 30rem) {
+  .card,
+  .card:hover {
+    box-shadow: none;
+  }
+
+  .persons {
+    max-height: 15rem;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.add-new {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #2e2e2e;
+  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);
+}
+
+.form-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.add-new button {
+  margin: 1rem auto;
+  justify-content: center;
+  font-size: large;
+}
