@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom";
 import classes from "./Modal.module.css";
-
 function Modal({ children, onBackdropClick }) {
   const backdropClickHandler = e => {
     if (e.target === e.currentTarget) onBackdropClick();

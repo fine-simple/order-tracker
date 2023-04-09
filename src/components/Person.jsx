@@ -1,5 +1,4 @@
 import Order from "./Order";
-
 export default function Person({ name, orders, onClick }) {
   const getTotalPrice = () =>
     Object.values(orders).reduce(
@@ -8,7 +7,7 @@ export default function Person({ name, orders, onClick }) {
     );
 
   return (
-    <article className="card" onClick={onClick}>
+    <article className="card"  onClick={onClick}>
       <header>
         <h3>{name}</h3>
       </header>

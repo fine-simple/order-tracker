@@ -19,7 +19,7 @@ export default function Summary({ persons, tax, changeTax }) {
   const total = subTotal * (1 + tax);
 
   return (
-    <article>
+    <article className="artcl">
       <h2>Summary</h2>
       <h4>Sub-total: {subTotal}</h4>
       <label htmlFor={taxInputId}>"Tax: </label>

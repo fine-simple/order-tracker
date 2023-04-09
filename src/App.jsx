@@ -51,13 +51,8 @@ function App() {
         amount: 3,
         price: 3.5,
       },
-      5: {
-        name: "Orange",
-        amount: 3,
-        price: 3.5,
-      },
     },
-    mostafa: {
+    Omar: {
       1: {
         name: "Apple",
         amount: 6,
@@ -108,7 +103,7 @@ function App() {
         <Search />
         <PersonList persons={persons} />
         <button className="btn-add" type="button" onClick={showAddMenu}>
-          Add New
+          Add New Order
         </button>
         <hr />
         <Summary persons={persons} tax={tax} changeTax={taxChangeHandler} />

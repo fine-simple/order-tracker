@@ -12,13 +12,20 @@
 }
 
 .modal {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px  0   0  #272726;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
   display: block;
   padding: 0;
   width: 80%;
-  border-radius: 1rem;
   border: none;
   max-width: 450px;
   min-height: 300px;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(22, 160, 229, 0.7);
   z-index: 20;
+  border-radius: .5rem;
+
 }
