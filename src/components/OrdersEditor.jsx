@@ -1,10 +1,10 @@
 import OrderEditor from "./OrderEditor";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function OrdersEditor({
-  availableOrders = {},
-  orders = {},
-  addOrder,
-}) {
+export default function OrdersEditor({ orders = {} }) {
+  const availableOrders = useSelector(state => state.items);
+  const dispatch = useDispatch();
+  
   const selectHandler = e => {
     const option = e.target.value;
     if (option === "add") {
@@ -33,15 +33,15 @@ export default function OrdersEditor({
             />
           ))}
         </ul>
-        <select id="order" onClick={selectHandler}>
-          <option value="" selected disabled hidden>
+        <select id="order" defaultValue="undefined" onClick={selectHandler}>
+          <option value="undefined" disabled hidden>
             Add Order
           </option>
           {Object.keys(availableOrders)
             .filter(key => !orders[key])
             .map(id => (
               <option key={id} value={id}>
-                {availableOrders[id]}
+                {availableOrders[id].name}
               </option>
             ))}
           <option value="add">Add New</option>

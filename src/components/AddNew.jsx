@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Modal from "./Modal/Modal";
 import OrdersEditor from "./OrdersEditor";
+import { useSelector } from "react-redux";
 
-export default function AddNew({ hideMenu, person, availableOrders }) {
+export default function AddNew({ hideMenu }) {
+  const availableOrders = useSelector(state => state.items);
   const [orders, setOrders] = useState({});
 
   const addNewOrder = order => {
@@ -19,10 +21,9 @@ export default function AddNew({ hideMenu, person, availableOrders }) {
           <label htmlFor="name">Name</label>
           <input type="text" id="name" />
         </div>
-        
+
         <div className="form-group">
           <OrdersEditor
-            availableOrders={availableOrders}
             orders={orders}
             addOrder={addNewOrder}
           />
