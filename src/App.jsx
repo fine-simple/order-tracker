@@ -51,6 +51,21 @@ function App() {
         amount: 3,
         price: 3.5,
       },
+      5: {
+        name: "Apple",
+        amount: 2,
+        price: 2.5,
+      },
+      6: {
+        name: "Apple",
+        amount: 2,
+        price: 2.5,
+      },
+      7: {
+        name: "Apple",
+        amount: 2,
+        price: 2.5,
+      },
     },
     Omar: {
       1: {

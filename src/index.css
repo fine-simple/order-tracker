@@ -33,7 +33,10 @@ hr {
 }
 h1 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight:700;
+  /* background: url('./assets/313388-pretty-background-for-food-pretty.jpg');
+  -webkit-background-clip: text;
+  color: transparent; */
   margin: 0;
 }
 .persons h3 {
@@ -41,15 +44,15 @@ h1 {
   overflow: auto;
 }
 .card {
+  font-size: 1.05rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #17171798;
+  background-color: #262626bf;
   box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.14);
-  cursor: pointer;
-  
- 
+  cursor: pointer;    
+ margin-right: .3rem;
 }
 .card footer {
   margin-top: auto;
@@ -57,6 +60,9 @@ h1 {
 .card ul {
   max-height: 70%;
   overflow: auto;
+ font-weight: 600;
+ font-size: 1.1rem;
+
 }
 .card * {
   margin: 0;
@@ -92,7 +98,6 @@ h1 {
     max-height: 35rem;
   }
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -122,14 +127,14 @@ input[type="number"] {
 .add-new button {
   margin: 1rem auto;
   justify-content: center;
-  font-size: large; 
+  font-size: 20px; 
   color: #201f1f;
-  background-color:rgb(0, 213, 255);
+  background-color:rgba(0, 213, 255, 0.931);
   width: 100%;
   height: 4.5vh;
   border: 2px solid rgb(3, 195, 238);
   border-radius: .5rem;  
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
 }
 .add-new button:hover {
@@ -145,13 +150,12 @@ input[type="number"] {
   border-radius: .5rem;
   padding-left:.5rem;
   background-color: rgba(0, 0, 0, 0.703);
-  height: 3.5vh;
-  font-size: 17px;
+  height: 4vh;
+  font-size: 18px;
   font-weight: 500;
 
 }
 article{
-  overflow: hidden;
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -193,7 +197,6 @@ select{
 input:hover , select:hover {
   border-color: rgb(0, 213, 255);
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
-
 }
 .add-new option{
   background-color: black;
@@ -207,9 +210,8 @@ input:hover , select:hover {
   border-radius: 5px;
   cursor: pointer;
   font-weight:500;
-  width: 10rem;
+  width: 20rem;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
 }
 .artcl{
 text-align: center;
@@ -222,13 +224,17 @@ text-align: center;
   background-color: #3131317b;
   border: 2px solid cadetblue;
   border-radius: 3px;
-  height: 3vh;
-  width: 14rem;
+  height: 3.5vh;
+  width: 15rem;
   border-color: rgb(0, 213, 255);
 
 }
-@media (max-width:45rem) {
+@media (max-width:50rem) {
   body {
-    background-image: url('./assets/mob.jpg'); 
+    background-image: url('./assets/mob4.jpg'); 
+  }
+  .card,
+  .card:hover {
+    box-shadow: none;
   }
 }
