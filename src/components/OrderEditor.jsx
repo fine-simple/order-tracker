@@ -11,17 +11,19 @@ export default function OrderEditor({ id, name, amount, changeOrder }) {
 
   return (
     <li className="order-edit">
+      <button type="button" id="btn" onClick={decreaseHandler}>
+          -
+        </button>
       <p>
         {name} X{amount}
       </p>
       <div>
+    
         <button type="button" onClick={increaseHandler}>
-          ☝
-        </button>
-        <button type="button" onClick={decreaseHandler}>
-          👇
+          +
         </button>
       </div>
     </li>
+    
   );
 }

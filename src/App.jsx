@@ -6,7 +6,7 @@ import Summary from "./components/Summary";
 
 function App() {
   const [persons, setPersons] = useState({
-    Hamada: {
+    عمر_يس: {
       1: {
         name: "Apple",
         amount: 2,
@@ -18,7 +18,7 @@ function App() {
         price: 3.5,
       },
     },
-    "zane Doe": {
+    سعيد: {
       1: {
         name: "Apple",
         amount: 6,
@@ -30,7 +30,7 @@ function App() {
         price: 3.5,
       },
     },
-    Tawfik: {
+    توفيق: {
       1: {
         name: "Apple",
         amount: 2,
@@ -67,7 +67,7 @@ function App() {
         price: 2.5,
       },
     },
-    xostafa: {
+    رينجو: {
       1: {
         name: "Apple",
         amount: 6,
@@ -79,7 +79,7 @@ function App() {
         price: 3.5,
       },
     },
-    ElZero: {
+    ادهم: {
       1: {
         name: "Apple",
         amount: 6,

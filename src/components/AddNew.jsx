@@ -31,7 +31,7 @@ export default function AddNew({ hideMenu, person, availableOrders }) {
           <label htmlFor="price">Price</label>
           <input type="number" id="price" />
         </div>
-        <button>Add</button>
+        <button className="add">Add</button>
       </form>
     </Modal>
   );
