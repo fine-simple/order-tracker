@@ -130,9 +130,9 @@ function App() {
       <main>
         <Search />
         <PersonList persons={persons} tax={tax} />
-        <button className="btn-add" type="button" onClick={showAddMenu}>
+        <a className="btn-add" type="button" onClick={showAddMenu}>
           Add New Order
-        </button>
+        </a>
         <hr />
         <Summary persons={persons} tax={tax} changeTax={taxChangeHandler} />
       </main>
