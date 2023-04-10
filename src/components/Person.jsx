@@ -1,21 +1,25 @@
 import Order from "./Order";
+import { useSelector } from "react-redux";
 
-export default function Person({ name = "", orders = {}, onClick, tax = 0 }) {
+export default function Person({ name = "", orders = {} }) {
+  const items = useSelector(state => state.items);
+  const tax = useSelector(state => state.shared.tax);
+
   const getTotalPrice = () =>
-    Object.values(orders).reduce(
-      (acc, { amount, price }) => acc + amount * price,
+    Object.entries(orders).reduce(
+      (acc, [id, amount]) => acc + amount * items[id].price,
       0
     ) *
     (1 + tax);
 
   return (
-    <article className="card"  onClick={onClick}>
+    <article className="card">
       <header>
         <h3>{name}</h3>
       </header>
       <ul>
-        {Object.entries(orders).map(([id, { name, amount }]) => (
-          <Order key={id} id={id} name={name} amount={amount} />
+        {Object.entries(orders).map(([id, amount]) => (
+          <Order key={id} id={id} amount={amount} />
         ))}
       </ul>
       <footer>

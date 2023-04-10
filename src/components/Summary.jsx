@@ -1,7 +1,14 @@
 import { useId } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setTax } from "../store/sharedSlice";
 
-export default function Summary({ persons, tax, changeTax }) {
+export default function Summary({}) {
+  const dispatch = useDispatch();
+
   const taxInputId = useId();
+  const tax = useSelector(state => state.shared.tax);
+  const persons = useSelector(state => state.persons);
+  const changeTax = tax => dispatch(setTax(tax));
 
   const subTotal = Object.values(persons).reduce(
     (acc, orders) =>
