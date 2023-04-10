@@ -22,7 +22,7 @@ export default function Summary({ persons, tax, changeTax }) {
     <article className="artcl">
       <h2>Summary</h2>
       <h4>Sub-total: {subTotal}</h4>
-      <label htmlFor={taxInputId}>"Tax: </label>
+      <label htmlFor={taxInputId}>Tax: </label>
       <input
         id={taxInputId}
         onChange={taxChangeHandler}

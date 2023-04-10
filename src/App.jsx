@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddNew from "./components/AddNew";
 import PersonList from "./components/PersonList";
 import Search from "./components/Search";
@@ -6,7 +6,7 @@ import Summary from "./components/Summary";
 
 function App() {
   const [persons, setPersons] = useState({
-    "John Doe": {
+    Hamada: {
       1: {
         name: "Apple",
         amount: 2,
@@ -18,7 +18,7 @@ function App() {
         price: 3.5,
       },
     },
-    "Jane Doe": {
+    "zane Doe": {
       1: {
         name: "Apple",
         amount: 6,
@@ -67,7 +67,7 @@ function App() {
         price: 2.5,
       },
     },
-    Omar: {
+    xostafa: {
       1: {
         name: "Apple",
         amount: 6,
@@ -79,7 +79,7 @@ function App() {
         price: 3.5,
       },
     },
-    ahmed: {
+    ElZero: {
       1: {
         name: "Apple",
         amount: 6,
@@ -92,9 +92,20 @@ function App() {
       },
     },
   });
+
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
 
-  const [tax, setTax] = useState(0.14);
+  const [tax, setTax] = useState(0);
+
+  const getOrders = () => {
+    const uniqueOrders = {};
+    Object.values(persons).forEach(orders =>
+      Object.entries(orders).forEach(
+        ([id, { name }]) => (uniqueOrders[id] = name)
+      )
+    );
+    return uniqueOrders;
+  };
 
   const taxChangeHandler = newTax => {
     setTax(newTax);
@@ -110,13 +121,15 @@ function App() {
 
   return (
     <>
-      {addMenuVisible && <AddNew hideMenu={hideAddMenu} />}
+      {addMenuVisible && (
+        <AddNew hideMenu={hideAddMenu} availableOrders={getOrders()} />
+      )}
       <header className="header">
         <h1>Order Helper</h1>
       </header>
       <main>
         <Search />
-        <PersonList persons={persons} />
+        <PersonList persons={persons} tax={tax} />
         <button className="btn-add" type="button" onClick={showAddMenu}>
           Add New Order
         </button>

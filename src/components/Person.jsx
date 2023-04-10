@@ -1,10 +1,12 @@
 import Order from "./Order";
-export default function Person({ name, orders, onClick }) {
+
+export default function Person({ name = "", orders = {}, onClick, tax = 0 }) {
   const getTotalPrice = () =>
     Object.values(orders).reduce(
       (acc, { amount, price }) => acc + amount * price,
       0
-    );
+    ) *
+    (1 + tax);
 
   return (
     <article className="card"  onClick={onClick}>
@@ -17,7 +19,7 @@ export default function Person({ name, orders, onClick }) {
         ))}
       </ul>
       <footer>
-        <h4>Total : {getTotalPrice()} L.E.</h4>
+        <h4>Total : {getTotalPrice().toFixed(2)} L.E.</h4>
       </footer>
     </article>
   );

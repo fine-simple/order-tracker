@@ -1,6 +1,17 @@
+import { useState } from "react";
 import Modal from "./Modal/Modal";
+import OrdersEditor from "./OrdersEditor";
 
-export default function AddNew({ hideMenu, person }) {
+export default function AddNew({ hideMenu, person, availableOrders }) {
+  const [orders, setOrders] = useState({});
+
+  const addNewOrder = order => {
+    setOrders({
+      ...orders,
+      [order.id]: { name: order.name, amount: order.amount },
+    });
+  };
+
   return (
     <Modal onBackdropClick={hideMenu}>
       <form className="add-new">
@@ -10,16 +21,16 @@ export default function AddNew({ hideMenu, person }) {
         </div>
         
         <div className="form-group">
-        <label htmlFor="order">Orders</label>
-          <select id="order">
-            <option value="1">Apple</option>
-            <option value="2">Orange</option>
-          </select>
+          <OrdersEditor
+            availableOrders={availableOrders}
+            orders={orders}
+            addOrder={addNewOrder}
+          />
         </div>
         <div className="form-group">
-          <label htmlFor="amount">Amount</label>
-          <input type="number" id="amount" />
-        </div>      
+          <label htmlFor="price">Price</label>
+          <input type="number" id="price" />
+        </div>
         <button>Add</button>
       </form>
     </Modal>

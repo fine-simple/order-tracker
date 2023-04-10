@@ -10,7 +10,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  
 }
 
 .persons {
@@ -33,7 +32,7 @@ hr {
 }
 h1 {
   font-size: 2rem;
-  font-weight:700;
+  font-weight: 700;
   /* background: url('./assets/313388-pretty-background-for-food-pretty.jpg');
   -webkit-background-clip: text;
   color: transparent; */
@@ -51,8 +50,8 @@ h1 {
   border-radius: 0.5rem;
   background-color: #262626bf;
   box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.14);
-  cursor: pointer;    
- margin-right: .3rem;
+  cursor: pointer;
+  margin-right: 0.3rem;
 }
 .card footer {
   margin-top: auto;
@@ -60,9 +59,8 @@ h1 {
 .card ul {
   max-height: 70%;
   overflow: auto;
- font-weight: 600;
- font-size: 1.1rem;
-
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 .card * {
   margin: 0;
@@ -103,7 +101,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -117,8 +115,7 @@ input[type="number"] {
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
-  background-image: url('/src/assets/AddNew.jpg');
-
+  background-image: url("/src/assets/AddNew.jpg");
 }
 .form-group {
   display: grid;
@@ -127,111 +124,104 @@ input[type="number"] {
 .add-new button {
   margin: 1rem auto;
   justify-content: center;
-  font-size: 20px; 
+  font-size: 20px;
   color: #201f1f;
-  background-color:rgba(0, 213, 255, 0.931);
+  background-color: rgba(0, 213, 255, 0.931);
   width: 100%;
   height: 4.5vh;
   border: 2px solid rgb(3, 195, 238);
-  border-radius: .5rem;  
+  border-radius: 0.5rem;
   font-weight: 700;
   cursor: pointer;
 }
 .add-new button:hover {
- border-color: rgb(0, 213, 255);
- box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
- background-color: rgba(0, 0, 0, 0.829);
- color: rgb(0, 213, 255);
-
+  border-color: rgb(0, 213, 255);
+  box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
+  background-color: rgba(0, 0, 0, 0.829);
+  color: rgb(0, 213, 255);
 }
-
-.add-new input{
+.add-new input {
   border: 2px solid rgb(3, 195, 238);
-  border-radius: .5rem;
-  padding-left:.5rem;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
   background-color: rgba(0, 0, 0, 0.703);
   height: 4vh;
   font-size: 18px;
   font-weight: 500;
-
-}
-article{
 }
 ::-webkit-scrollbar {
   width: 5px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #201f1f;
   border-radius: 3px;
 }
-.persons{
+.persons {
   /* overflow: hidden; */
 }
-body{
-  background-repeat: no-repeat; 
+body {
+  background-repeat: no-repeat;
   background-size: cover;
   display: grid;
   justify-content: space-evenly;
-  background-image: url('./assets/background.jpg');
+  background-image: url("./assets/background.jpg");
   margin: 0;
 }
-select{
+select {
   background-color: black;
- border: 2px solid rgb(3, 195, 238);
+  border: 2px solid rgb(3, 195, 238);
 
-  border-radius: .5rem;
-  padding-left:.5rem;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
   background-color: rgba(0, 0, 0, 0.742);
   font-weight: 500;
   height: 4.2vh;
   font-size: 17px;
   cursor: pointer;
 }
-.add-new select:focus{
-  border-color: rgb(0, 213, 255);
-  box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
-
-}
-input:hover , select:hover {
+.add-new select:focus {
   border-color: rgb(0, 213, 255);
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
 }
-.add-new option{
+input:hover,
+select:hover {
+  border-color: rgb(0, 213, 255);
+  box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
+}
+.add-new option {
   background-color: black;
 }
 .btn-add{
-  background-color: rgba(0, 213, 255, 0.869);
-    border-color: rgb(0, 0, 0);
-  border: 2px;
-  color: #201f1f;
+  border: 2px solid rgb(28, 37, 203);
+  background-color: #000000bc;
+  border-color: rgb(0, 213, 255);
   font-size: 18px;
   border-radius: 5px;
   cursor: pointer;
   font-weight:500;
-  width: 20rem;
+  width: 10rem;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
-.artcl{
-text-align: center;
+.artcl {
+  text-align: center;
 }
-.btn-add:hover{
+.btn-add:hover {
   background-color: black;
   color: rgba(0, 213, 255, 0.869);
 }
-.tax{
+.tax {
   background-color: #3131317b;
   border: 2px solid cadetblue;
   border-radius: 3px;
   height: 3.5vh;
   width: 15rem;
   border-color: rgb(0, 213, 255);
-
 }
-@media (max-width:50rem) {
+@media (max-width: 50rem) {
   body {
-    background-image: url('./assets/mob4.jpg'); 
+    background-image: url("./assets/mob4.jpg");
   }
   .card,
   .card:hover {
