@@ -168,13 +168,15 @@ body {
   background-size: cover;
   display: grid;
   justify-content: space-evenly;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-image: url("./assets/background.jpg");
   margin: 0;
 }
 select {
   background-color: black;
   border: 2px solid rgb(3, 195, 238);
-
   border-radius: 0.5rem;
   padding-left: 0.5rem;
   background-color: rgba(0, 0, 0, 0.742);
@@ -196,7 +198,6 @@ select:hover {
   background-color: black;
 }
 .btn-add{
-  border: 2px solid rgb(28, 37, 203);
   background-color: rgba(0, 213, 255, 0.865);
   border-color: rgb(0, 213, 255);
   font-size: 18px;
@@ -230,9 +231,9 @@ select:hover {
   width: 15rem;
   border-color: rgb(0, 213, 255);
 }
-@media (max-width: 50rem) {
+@media (max-width: 33.8rem) {
   body {
-    background-image: url("./assets/mob4.jpg");
+    background-size: auto;
   }
   .card,
   .card:hover {
@@ -255,8 +256,7 @@ select:hover {
   width: 2.7rem;
   font-weight: 200;
   font-size: 1.7rem;
-  border: 2px solid;
-  border-color: rgb(0, 213, 255);
+  border: 2px solid rgb(0, 213, 255);
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.2);
   background-color: rgba(0, 0, 0, 0.959);
   color: rgb(0, 213, 255);
@@ -272,16 +272,37 @@ ul{
   padding: .2rem;
 }
 fieldset{
+  border: 2px solid;
   border-color: rgb(0, 213, 255);
-  border-radius: 3px;
+  border-radius: 4px;
   max-height: 20rem;
 }
 .btn-add:focus{
   transform: translateY(-5px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-article label ,h4{
+.artcl label ,h4 ,span{
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.artcl input::placeholder {
+  color: rgba(226, 225, 225, 0.9);
+  text-align: center;
+  font-size:18px;
+  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+.artcl h5{
+  font-size: 18px;
+  margin-top: -.06rem;
+}
+select{
+ width: 8rem;
  
+}
+
+.artcl{
+  border-radius: 0.5rem;
+  background-color: #262626ac;
 }

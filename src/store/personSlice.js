@@ -6,6 +6,7 @@ const initialState = {
     items: {
       1: 5,
     },
+    
   },
 };
 

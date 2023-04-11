@@ -29,16 +29,18 @@ export default function Summary({}) {
     <article className="artcl">
       <h2>Summary</h2>
       <h4>Sub-total: {subTotal}</h4>
-      <label htmlFor={taxInputId}>Tax: </label>
+      <div className="flex">
       <input
         id={taxInputId}
         onChange={taxChangeHandler}
         className="tax"
         name="tax"
         type="number"
+        placeholder="Tax"
       />
       <span> %</span>
-      <h4>Total: {total.toFixed(2)}</h4>
+      </div>
+      <h5>Total: {total.toFixed(2)}</h5>
     </article>
   );
 }

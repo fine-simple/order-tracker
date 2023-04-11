@@ -26,5 +26,6 @@ export default function Person({ name = "", orders = {} }) {
         <h4>Total : {getTotalPrice().toFixed(2)} L.E.</h4>
       </footer>
     </article>
+    
   );
 }

@@ -19,7 +19,7 @@ export default function AddNew({ hideMenu }) {
       <form className="add-new">
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
+          <input type="text" id="name"  placeholder="Your Name"/>
         </div>
 
         <div className="form-group">
@@ -30,7 +30,7 @@ export default function AddNew({ hideMenu }) {
         </div>
         <div className="form-group">
           <label htmlFor="price">Price</label>
-          <input type="number" id="price" />
+          <input type="number" id="price"  placeholder="Item Price"/>
         </div>
         <button className="add">Add</button>
       </form>
