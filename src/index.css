@@ -295,14 +295,12 @@ fieldset{
 }
 .artcl h5{
   font-size: 18px;
-  margin-top: -.06rem;
 }
 select{
  width: 8rem;
  
 }
-
 .artcl{
   border-radius: 0.5rem;
-  background-color: #262626ac;
+  background-color: #262626b5;
 }
