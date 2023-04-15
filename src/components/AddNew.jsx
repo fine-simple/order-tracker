@@ -31,8 +31,10 @@ export default function AddNew({ hideMenu }) {
         break;
       case "add":
         setAddNewVisible(true);
+        break;
       default:
         setOrders(prev => ({ ...prev, [option]: 1 }));
+        break;
     }
   };
 
