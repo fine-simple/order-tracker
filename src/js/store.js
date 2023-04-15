@@ -11,6 +11,4 @@ export default configureStore({
     items: itemReducer,
     shared: sharedReducer,
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(loggerMiddleware),
 });

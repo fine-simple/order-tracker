@@ -41,6 +41,13 @@ export default function AddNew({ hideMenu }) {
   const submitHandler = e => {
     e.preventDefault();
     const name = e.target.name.value;
+
+    // validate input
+    if (name.trim().length === 0) {
+      alert("Please add a Name");
+      return;
+    }
+
     const newPerson = {
       name,
       items: orders,
