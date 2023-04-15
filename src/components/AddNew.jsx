@@ -26,10 +26,13 @@ export default function AddNew({ hideMenu }) {
 
   const selectHandler = e => {
     const option = e.target.value;
-    if (option === "add") {
-      setAddNewVisible(true);
-    } else {
-      setOrders(prev => ({ ...prev, [option]: 1 }));
+    switch (option) {
+      case "undefined":
+        break;
+      case "add":
+        setAddNewVisible(true);
+      default:
+        setOrders(prev => ({ ...prev, [option]: 1 }));
     }
   };
 
