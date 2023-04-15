@@ -1,7 +1,7 @@
 import Order from "./Order";
 import { useSelector } from "react-redux";
 
-export default function Person({ name = "", orders = {} }) {
+export default function Person({ id, name = "", orders = {} }) {
   const items = useSelector(state => state.items);
   const tax = useSelector(state => state.shared.tax);
 
@@ -26,6 +26,5 @@ export default function Person({ name = "", orders = {} }) {
         <h4>Total : {getTotalPrice().toFixed(2)} L.E.</h4>
       </footer>
     </article>
-    
   );
 }

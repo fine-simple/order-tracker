@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setTax } from "../store/sharedSlice";
+import { setTax } from "../js/reducers/sharedSlice";
 
 export default function Summary({}) {
   const dispatch = useDispatch();

@@ -2,8 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
- 
-  color-scheme: light dark;
+
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -189,6 +189,7 @@ select {
   border-color: rgb(0, 213, 255);
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
 }
+
 input:hover,
 select:hover {
   border-color: rgb(0, 213, 255);
@@ -303,4 +304,14 @@ select{
 .artcl{
   border-radius: 0.5rem;
   background-color: #262626b5;
+}
+
+.new-order {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.new-order input {
+  width: 5rem;
 }

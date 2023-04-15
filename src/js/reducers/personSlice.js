@@ -6,7 +6,6 @@ const initialState = {
     items: {
       1: 5,
     },
-    
   },
 };
 
@@ -15,7 +14,7 @@ const personSlice = createSlice({
   initialState,
   reducers: {
     addPerson(state, action) {
-      const { name, items = Map() } = action.payload;
+      const { name, items = {} } = action.payload;
       state[Date.now()] = { name, items };
     },
     editPerson(state, action) {
@@ -38,7 +37,6 @@ const personSlice = createSlice({
     },
     increaseItem(state, action) {
       const { personId, itemId } = action.payload;
-      const curr = state.get(personId).items.get(itemId);
       state[personId].itemsp[itemId] += 1;
     },
   },

@@ -26,13 +26,13 @@ const sharedSlice = createSlice({
       state.shared[itemId] += 1;
     },
     setTax(state, action) {
-      state.tax = action.payload.tax;
+      state.tax = action.payload;
     },
     setTip(state, action) {
-      state.tip = action.payload.tip;
+      state.tip = action.payload;
     },
     setDiscount(state, action) {
-      state.discount = action.payload.discount;
+      state.discount = action.payload;
     },
   },
 });

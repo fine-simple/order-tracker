@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddNew from "./components/AddNew";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
