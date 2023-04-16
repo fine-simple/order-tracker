@@ -15,7 +15,7 @@ export default function OrderEditor({ id, name, amount, changeOrder }) {
           -
         </button>
       <p>
-        {name} X{amount}
+        {name} x{amount}
       </p>
       <div>
     

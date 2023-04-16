@@ -64,7 +64,7 @@ export default function AddNew({ hideMenu }) {
       <form className="add-new" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" placeholder="Your Name" />
+          <input type="text" id="name" placeholder="Your Name" required />
         </div>
 
         <div className="form-group">

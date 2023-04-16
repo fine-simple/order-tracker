@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { addItem } from "../js/reducers/itemSlice";
 import { useDispatch } from "react-redux";
+import done from "../assets/done-v.png"
+import x from "../assets/close-x.png"
 
 export default function NewOrder({ hideMenu }) {
   const dispatch = useDispatch();
@@ -25,14 +27,19 @@ export default function NewOrder({ hideMenu }) {
 
   return (
     <div className="new-order">
-      <input type="text" id="name" placeholder="Name" ref={nameRef} />
-      <input type="number" id="price" placeholder="price" ref={priceRef} />
-      <button type="button" onClick={addHandler}>
-        ✅
+      <span>
+        <input type="text" id="name" placeholder="Name" ref={nameRef} required />
+        <input type="number" id="price" placeholder="Price" ref={priceRef} required  />
+      </span>
+      <div className="btns">
+      <button type="button" id="ok" onClick={addHandler}>
+        <img src={done} alt="" />
       </button>
-      <button type="button" onClick={cancelHandler}>
-        ❌
+      <button type="button" id="no" onClick={cancelHandler}>
+       <img src={x} alt=""/>
       </button>
+      </div>
     </div>
+      
   );
 }

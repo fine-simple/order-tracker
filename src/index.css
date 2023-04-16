@@ -2,7 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   font-synthesis: none;
@@ -46,11 +45,10 @@ h1 {
   font-size: 1.05rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: .9rem;
   border-radius: 0.5rem;
   background-color: #262626bf;
   box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.14);
-  cursor: pointer;
   margin-right: 0.3rem;
   max-height: 14rem;
 }
@@ -94,7 +92,7 @@ h1 {
     box-shadow: none;
   }
   .persons {
-    max-height: 31rem;
+    max-height: 27rem;
   }
 }
 input::-webkit-outer-spin-button,
@@ -104,6 +102,7 @@ input::-webkit-inner-spin-button {
 }
 * {
   box-sizing: border-box;
+  
 }
 
 input[type="number"] {
@@ -114,7 +113,6 @@ input[type="number"] {
   flex-direction: column;
   gap: 0.6rem;
   padding: 1rem;
- 
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
   background-image: url("/src/assets/AddNew.jpg");
@@ -134,13 +132,12 @@ input[type="number"] {
   border: 2px solid rgb(3, 195, 238);
   border-radius: 0.5rem;
   font-weight: 700;
+  min-height: 4.5vh;
   cursor: pointer;
 }
-.add-new button:hover {
-  border-color: rgb(0, 213, 255);
-  box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
-  background-color: rgba(0, 0, 0, 0.829);
-  color: rgb(0, 213, 255);
+.add:active{
+    transform: translateY(1px);
+    box-shadow: 2px 5px 10px rgba(7, 244, 252, 0.5); 
 }
 .add-new input {
   border: 2px solid rgb(3, 195, 238);
@@ -164,7 +161,6 @@ input[type="number"] {
   /* overflow: hidden; */
 }
 body {
-  background-repeat: no-repeat;
   background-size: cover;
   display: grid;
   justify-content: space-evenly;
@@ -172,12 +168,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-image: url("./assets/background.jpg");
-  margin: 0;
+  padding-bottom: 1.2rem;
 }
 select {
   background-color: black;
   border: 2px solid rgb(3, 195, 238);
-  border-radius: 0.5rem;
+  border-radius: 4px;
   padding-left: 0.5rem;
   background-color: rgba(0, 0, 0, 0.742);
   font-weight: 500;
@@ -196,7 +192,9 @@ select:hover {
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
 }
 .add-new option {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.912);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4px;
 }
 .btn-add{
   background-color: rgba(0, 213, 255, 0.865);
@@ -213,7 +211,7 @@ select:hover {
 .artcl {
   text-align: center;
 }
-.btn-add:hover {
+.btn-add {
   transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -232,7 +230,7 @@ select:hover {
   width: 15rem;
   border-color: rgb(0, 213, 255);
 }
-@media (max-width: 33.8rem) {
+@media (max-width: 20rem) {
   body {
     background-size: auto;
   }
@@ -248,8 +246,8 @@ select:hover {
   align-items: center;
   gap: 1rem;
   background-color: #0808083c;
-  
 }
+
 .order-edit button{
   display: flex;
   justify-content: center;
@@ -262,8 +260,9 @@ select:hover {
   background-color: rgba(0, 0, 0, 0.959);
   color: rgb(0, 213, 255);
   border-radius: 3px;
+  cursor: pointer;
 }
-.order-edit button:focus{
+.order-edit button:active{
   background-color:rgb(0, 213, 255) ;
   color: black;
 }
@@ -272,6 +271,13 @@ ul{
   max-height: 10rem;
   padding: .2rem;
 }
+
+ul p {
+  font-size: 22px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+}
+
 fieldset{
   border: 2px solid;
   border-color: rgb(0, 213, 255);
@@ -297,21 +303,95 @@ fieldset{
 .artcl h5{
   font-size: 18px;
 }
-select{
- width: 8rem;
- 
-}
+
 .artcl{
   border-radius: 0.5rem;
-  background-color: #262626b5;
+  background-color: #262626cb;
 }
-
+.artcl input{
+  padding: 3px;
+ height: 4vh;
+ border-color: rgb(0, 213, 255);
+ box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.3);
+}
 .new-order {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem;
 }
-
 .new-order input {
   width: 5rem;
+}
+select , input{
+  color: white;
+}
+#order{
+  width: 12rem;
+}
+
+.new-order #name{
+  width: 10rem;
+}
+.new-order #price{
+  width: 4.4rem;
+}
+.new-order #ok , #no{
+  background-color: #000000b0;
+  border: 2px solid rgba(18, 17, 17, 0);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.new-order #ok {
+  background-color: rgb(7, 238, 7);
+  height: 2.2rem;
+}
+.new-order #no{
+  background-color: rgb(255, 0, 0);
+}
+.new-order #ok:hover , #no:hover{
+  transform: translateY(3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.new-order #ok:active , #no:active{
+  transform: translateY(4px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.add-new span{
+  display: flex;
+  gap: .4rem;
+}
+.btns{
+  display: flex;
+  gap: 1rem;
+}
+@media (max-width:375px)
+{
+  .add-new span{
+    display: flex;
+    gap: .3rem;
+  }
+}@media only screen and (max-width: 400px) 
+{
+  .add-new .add {
+    min-height: 5.5vh;
+  }
+  .add-new input {
+    min-height: 5.7vh;
+  }
+}
+.head{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.head span{
+  display: flex;
+  gap: .4rem;
+}
+.head button{
+  background-color: #201f1f00;
+  border: none;
+  cursor: pointer;
 }

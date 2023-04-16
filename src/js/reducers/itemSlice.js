@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  1: { name: "Apple", price: 1.0 },
+ 
 };
 
 const itemSlice = createSlice({

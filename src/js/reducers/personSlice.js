@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  1: {
-    name: "John",
-    items: {
-      1: 5,
-    },
-  },
+  
 };
 
 const personSlice = createSlice({
