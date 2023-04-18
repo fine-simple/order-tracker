@@ -35,13 +35,14 @@ export default function Summary({}) {
       <h2>Summary</h2>
       <h4>Sub-total: {subTotal()}</h4>
       <div className="flex">
+        <label htmlFor="tax">Tax</label>
         <input
           id={taxInputId}
           onChange={taxChangeHandler}
           className="tax"
           name="tax"
           type="number"
-          placeholder="Tax"
+          placeholder="e.g., 14%"
         />
         <span> %</span>
       </div>

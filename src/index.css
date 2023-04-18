@@ -10,26 +10,30 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
-.persons {
+.persons 
+{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-gap: 1rem;
   overflow: auto;
   max-height: 35rem;
 }
-.card:hover {
+.card:hover 
+{
   box-shadow: 0 0.5rem 1rem rgba(10, 132, 245, 0.8);
 }
-main {
+main 
+{
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-hr {
+hr 
+{
   width: 100%;
 }
-h1 {
+h1 
+{
   font-size: 2rem;
   font-weight: 700;
   /* background: url('./assets/313388-pretty-background-for-food-pretty.jpg');
@@ -37,11 +41,13 @@ h1 {
   color: transparent; */
   margin: 0;
 }
-.persons h3 {
+.persons h3 
+{
   text-transform: capitalize;
   overflow: auto;
 }
-.card {
+.card 
+{
   font-size: 1.05rem;
   display: flex;
   flex-direction: column;
@@ -52,19 +58,23 @@ h1 {
   margin-right: 0.3rem;
   max-height: 14rem;
 }
-.card footer {
+.card footer 
+{
   margin-top: auto;
 }
-.card ul {
+.card ul 
+{
   max-height: 70%;
   overflow: auto;
   font-weight: 600;
   font-size: 1.1rem;
 }
-.card * {
+.card * 
+{
   margin: 0;
 }
-.header {
+.header 
+{
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -135,6 +145,10 @@ input[type="number"] {
   min-height: 4.5vh;
   cursor: pointer;
 }
+.add:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 .add:active{
     transform: translateY(1px);
     box-shadow: 2px 5px 10px rgba(7, 244, 252, 0.5); 
@@ -161,12 +175,12 @@ input[type="number"] {
   /* overflow: hidden; */
 }
 body {
-  background-size: cover;
   display: grid;
   justify-content: space-evenly;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   background-image: url("./assets/background.jpg");
   padding-bottom: 1.2rem;
 }
@@ -215,6 +229,10 @@ select:hover {
   transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.btn-add:hover{
+  transform: translateY(-1px);
+
+}
 .btn-add:active {
   transform: translateY(0px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -231,9 +249,6 @@ select:hover {
   border-color: rgb(0, 213, 255);
 }
 @media (max-width: 20rem) {
-  body {
-    background-size: auto;
-  }
   .card,
   .card:hover {
     box-shadow: none;
@@ -245,9 +260,8 @@ select:hover {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: #0808083c;
+  background-color: #0000002e;
 }
-
 .order-edit button{
   display: flex;
   justify-content: center;
@@ -275,14 +289,11 @@ ul{
 ul p {
   font-size: 22px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
 }
-
 fieldset{
   border: 2px solid;
   border-color: rgb(0, 213, 255);
   border-radius: 4px;
-  max-height: 20rem;
 }
 .btn-add:focus{
   transform: translateY(-5px);
@@ -292,7 +303,6 @@ fieldset{
   font-size: 20px;
   font-weight: 600;
 }
-
 .artcl input::placeholder {
   color: rgba(226, 225, 225, 0.9);
   text-align: center;
@@ -303,7 +313,6 @@ fieldset{
 .artcl h5{
   font-size: 18px;
 }
-
 .artcl{
   border-radius: 0.5rem;
   background-color: #262626cb;
@@ -318,6 +327,7 @@ fieldset{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: .8rem;
 }
@@ -330,7 +340,6 @@ select , input{
 #order{
   width: 12rem;
 }
-
 .new-order #name{
   width: 10rem;
 }
@@ -351,11 +360,11 @@ select , input{
   background-color: rgb(255, 0, 0);
 }
 .new-order #ok:hover , #no:hover{
-  transform: translateY(3px);
+  transform: translateY(-3px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .new-order #ok:active , #no:active{
-  transform: translateY(4px);
+  transform: translateY(1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .add-new span{
@@ -374,6 +383,8 @@ select , input{
   }
 }@media only screen and (max-width: 400px) 
 {
+  body {
+  }
   .add-new .add {
     min-height: 5.5vh;
   }

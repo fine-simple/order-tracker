@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .modal {
   font-size: 20px;
   font-weight: bold;
@@ -27,5 +26,4 @@
   min-height: 300px;
   z-index: 20;
   border-radius: .5rem;
-
 }
