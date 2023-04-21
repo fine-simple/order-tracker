@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
- 
-};
+const initialState = {};
 
 const itemSlice = createSlice({
   name: "item",
   initialState,
   reducers: {
     addItem(state, action) {
-      const { name, price } = action.payload;
-      state[Date.now()] = { name, price };
+      const { id, name, price } = action.payload;
+      id ??= Date.now();
+      state[id] = { name, price };
     },
     editItem(state, action) {
       const { id, name, price } = action.payload;

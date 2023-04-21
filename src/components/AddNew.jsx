@@ -59,6 +59,10 @@ export default function AddNew({ hideMenu }) {
     setAddNewVisible(false);
   };
 
+  const addOrder = (id) => {
+    setOrders(prev => ({ ...prev, [id]: 1 }));
+  };
+
   return (
     <Modal onBackdropClick={hideMenu}>
       <form className="add-new" onSubmit={submitHandler}>
@@ -81,7 +85,7 @@ export default function AddNew({ hideMenu }) {
                 />
               ))}
             </ul>
-            {addNewVisible && <NewOrder hideMenu={hideAddNew} />}
+            {addNewVisible && <NewOrder addOrder={addOrder} hideMenu={hideAddNew} />}
             {!addNewVisible && (
               <select
                 id="order"
