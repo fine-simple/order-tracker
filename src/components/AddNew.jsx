@@ -53,6 +53,7 @@ export default function AddNew({ hideMenu }) {
       items: orders,
     };
     dispatch(addPerson(newPerson));
+    hideMenu();
   };
 
   const hideAddNew = () => {
