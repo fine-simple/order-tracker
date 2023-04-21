@@ -59,7 +59,7 @@ export default function AddNew({ hideMenu }) {
     setAddNewVisible(false);
   };
 
-  const addOrder = (id) => {
+  const addOrder = id => {
     setOrders(prev => ({ ...prev, [id]: 1 }));
   };
 
@@ -85,13 +85,11 @@ export default function AddNew({ hideMenu }) {
                 />
               ))}
             </ul>
-            {addNewVisible && <NewOrder addOrder={addOrder} hideMenu={hideAddNew} />}
+            {addNewVisible && (
+              <NewOrder addOrder={addOrder} hideMenu={hideAddNew} />
+            )}
             {!addNewVisible && (
-              <select
-                id="order"
-                defaultValue="undefined"
-                onClick={selectHandler}
-              >
+              <select id="order" value="undefined" onChange={selectHandler}>
                 <option value="undefined" disabled hidden>
                   Add Order
                 </option>
