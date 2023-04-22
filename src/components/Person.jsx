@@ -5,10 +5,12 @@ import { removePerson } from "../js/reducers/personSlice";
 import edit from "../assets/square-edit.png";
 import del from "../assets/trash-delete.png";
 import AddModify from "./AddModify";
+import Confirm from "./Confirm";
 
 export default function Person({ id, name = "", orders = {} }) {
   const dispatch = useDispatch();
   const [editVisible, setEditVisible] = useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
   const items = useSelector(state => state.items);
   const tax = useSelector(state => state.shared.tax);
   const editId = useId();
@@ -32,12 +34,25 @@ export default function Person({ id, name = "", orders = {} }) {
   };
 
   const deleteClickedHandler = e => {
+    setConfirmVisible(true);
+  };
+
+  const deletePersonHandler = () => {
     dispatch(removePerson(id));
   };
 
   return (
     <>
-      {editVisible && <AddModify id={id} name={name} orders={orders} hideMenu={hideMenu} />}
+      {editVisible && (
+        <AddModify id={id} name={name} orders={orders} hideMenu={hideMenu} />
+      )}
+      {confirmVisible && (
+        <Confirm
+          onOk={deletePersonHandler}
+          onCancel={() => setConfirmVisible(false)}
+          message="Are you sure you want to delete this person?"
+        />
+      )}
       <article className="card">
         <div className="head">
           <header>
