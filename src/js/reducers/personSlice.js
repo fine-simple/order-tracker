@@ -10,7 +10,7 @@ const personSlice = createSlice({
   reducers: {
     addPerson(state, action) {
       const { id = Date.now(), name, items = {} } = action.payload;
-      state[id] = { name, items };
+      state[id] = { name, items } ;
     },
     removePerson(state, action) {
       delete state[action.payload];

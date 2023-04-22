@@ -2,8 +2,8 @@ import { useCallback, useId, useState } from "react";
 import Order from "./Order";
 import { useSelector, useDispatch } from "react-redux";
 import { removePerson } from "../js/reducers/personSlice";
-import edit from "../assets/square-edit.png";
-import del from "../assets/trash-delete.png";
+import edit from "../assets/ed.svg";
+import del from "../assets/del.svg";
 import AddModify from "./AddModify";
 import Confirm from "./Confirm";
 
@@ -59,10 +59,10 @@ export default function Person({ id, name = "", orders = {} }) {
             <h3>{name}</h3>
           </header>
           <span>
-            <button id={editId} onClick={editClickedHandler}>
+            <button id={editId} onClick={editClickedHandler} className="mod">
               <img src={edit} alt="edit" />
             </button>
-            <button id={deleteId} onClick={deleteClickedHandler}>
+            <button id={deleteId} onClick={deleteClickedHandler} className="mod">
               <img src={del} alt="delete" />
             </button>
           </span>

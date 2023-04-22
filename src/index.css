@@ -36,9 +36,6 @@ h1
 {
   font-size: 2rem;
   font-weight: 700;
-  /* background: url('./assets/313388-pretty-background-for-food-pretty.jpg');
-  -webkit-background-clip: text;
-  color: transparent; */
   margin: 0;
 }
 .persons h3 
@@ -68,6 +65,12 @@ h1
   overflow: auto;
   font-weight: 600;
   font-size: 1.1rem;
+}
+.mod{
+width: 2.4rem;
+}
+.mod img{
+  color:white;
 }
 .card * 
 {
@@ -145,13 +148,10 @@ input[type="number"] {
   min-height: 4.5vh;
   cursor: pointer;
 }
-.add:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
+
 .add:active{
     transform: translateY(1px);
-    box-shadow: 2px 5px 10px rgba(7, 244, 252, 0.5); 
+    box-shadow: 2px 5px 10px rgba(7, 244, 252, 0.355); 
 }
 .add-new input {
   border: 2px solid rgb(3, 195, 238);
@@ -381,16 +381,24 @@ select , input{
     display: flex;
     gap: .3rem;
   }
+  .Confirm{
+    height: 10rem;
+  }
 }@media only screen and (max-width: 400px) 
 {
-  body {
-  }
   .add-new .add {
-    min-height: 5.5vh;
+    min-height: 6vh;
   }
   .add-new input {
     min-height: 5.7vh;
   }
+  .Confirm{
+    height: 10rem;
+  }
+  select{
+    min-height: 5.7vh;
+  }
+ 
 }
 .head{
   display: flex;
@@ -405,4 +413,50 @@ select , input{
   background-color: #201f1f00;
   border: none;
   cursor: pointer;
+}
+.Confirm{
+  margin-top: 2rem;
+  font-weight: 100;
+  font-family:  Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-shadow: none;
+  background: rgba(27, 27, 27, 0.852);
+  padding: 1rem;
+  padding-top: .2rem;
+  padding-bottom: 1.5rem;
+  border-radius: 6px;
+  color: #ffffff;
+ 
+}
+.btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btns button{
+  font-size: 18px;
+  text-align: center;
+  border-radius: 4px;
+  height: 2rem;
+  background-color: #00000000;
+  cursor: pointer;
+}
+#yes{
+  color: #FF0F0F;
+  border: 2px solid #FF0F0F;
+
+}
+#cancel{
+  color: #24D600;
+  border: 2px solid #24D600;
+}
+#yes{
+  background-color: #FF0F0F;
+  color: white;
+}
+#cancel{
+  background-color: #24D600;
+  color: white;
+}
+#cancel:focus{
+  transform: translate(1px);
 }

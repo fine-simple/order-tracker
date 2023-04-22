@@ -7,7 +7,7 @@ import NewOrder from "./NewOrder";
 
 export default function AddModify({
   hideMenu,
-  id = null,
+  id = undefined,
   name = "",
   orders: savedOrders = {},
 }) {
