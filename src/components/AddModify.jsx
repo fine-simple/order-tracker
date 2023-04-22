@@ -5,10 +5,15 @@ import Modal from "./Modal/Modal";
 import OrderEditor from "./OrderEditor";
 import NewOrder from "./NewOrder";
 
-export default function AddNew({ hideMenu }) {
+export default function AddModify({
+  hideMenu,
+  id = null,
+  name = "",
+  orders: savedOrders = {},
+}) {
   const availableOrders = useSelector(state => state.items);
   const dispatch = useDispatch();
-  const [orders, setOrders] = useState({});
+  const [orders, setOrders] = useState({ ...savedOrders });
   const [addNewVisible, setAddNewVisible] = useState(false);
 
   const changeOrderHandler = ({ id, amount }) => {
@@ -49,6 +54,7 @@ export default function AddNew({ hideMenu }) {
     }
 
     const newPerson = {
+      id,
       name,
       items: orders,
     };
@@ -69,7 +75,13 @@ export default function AddNew({ hideMenu }) {
       <form className="add-new" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" placeholder="Your Name" required />
+          <input
+            defaultValue={name}
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            required
+          />
         </div>
 
         <div className="form-group">
@@ -108,7 +120,7 @@ export default function AddNew({ hideMenu }) {
           </fieldset>
         </div>
         <button type="submit" className="add">
-          Add
+          {(id && "Save") || "Add"}
         </button>
       </form>
     </Modal>

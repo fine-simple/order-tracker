@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddNew from "./components/AddNew";
+import AddModify from "./components/AddModify";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
 
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      {addMenuVisible && <AddNew hideMenu={hideAddMenu} />}
+      {addMenuVisible && <AddModify hideMenu={hideAddMenu} />}
       <header className="header">
         <h1>Order Helper</h1>
       </header>

@@ -9,13 +9,8 @@ const personSlice = createSlice({
   initialState,
   reducers: {
     addPerson(state, action) {
-      const { name, items = {} } = action.payload;
-      state[Date.now()] = { name, items };
-    },
-    editPerson(state, action) {
-      const { id, name, items } = action.payload;
-      state[id].name = name;
-      state[id].items = items;
+      const { id = Date.now(), name, items = {} } = action.payload;
+      state[id] = { name, items };
     },
     removePerson(state, action) {
       delete state[action.payload];
@@ -37,6 +32,5 @@ const personSlice = createSlice({
   },
 });
 
-export const { addPerson, addItem, editPerson, removePerson } =
-  personSlice.actions;
+export const { addPerson, addItem, removePerson } = personSlice.actions;
 export default personSlice.reducer;
