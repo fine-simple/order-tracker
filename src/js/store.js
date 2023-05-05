@@ -13,7 +13,5 @@ export default configureStore({
     shared: sharedReducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware()
-      .concat(localStorageMiddleware)
-      .concat(loggerMiddleware),
+    getDefaultMiddleware().concat(localStorageMiddleware),
 });

@@ -7,8 +7,7 @@ const itemSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const { id, name, price } = action.payload;
-      id ??= Date.now();
+      const { id = Date.now(), name, price } = action.payload;
       state[id] = { name, price };
     },
     editItem(state, action) {
