@@ -50,7 +50,7 @@ h1
   flex-direction: column;
   padding: .9rem;
   border-radius: 0.5rem;
-  background-color: #262626bf;
+  background-color: #262626;
   box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.14);
   margin-right: 0.3rem;
   max-height: 14rem;
@@ -238,10 +238,10 @@ select:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .card:hover{
-  background-color: #201f1fdd;
+  background-color: #201f1f;
 }
 .tax {
-  background-color: #3131317b;
+  background-color: #313131;
   border: 2px solid cadetblue;
   border-radius: 3px;
   height: 3.5vh;
@@ -260,7 +260,7 @@ select:hover {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: #0000002e;
+  background-color: #000000;
 }
 .order-edit button{
   display: flex;
@@ -315,7 +315,7 @@ fieldset{
 }
 .artcl{
   border-radius: 0.5rem;
-  background-color: #262626cb;
+  background-color: #262626;
 }
 .artcl input{
   padding: 3px;
@@ -347,7 +347,7 @@ select , input{
   width: 4.4rem;
 }
 .new-order #ok , #no{
-  background-color: #000000b0;
+  background-color: #000000;
   border: 2px solid rgba(18, 17, 17, 0);
   border-radius: 4px;
   cursor: pointer;
@@ -410,7 +410,7 @@ select , input{
   gap: .4rem;
 }
 .head button{
-  background-color: #201f1f00;
+  background-color: #201f1f;
   border: none;
   cursor: pointer;
 }
@@ -437,7 +437,7 @@ select , input{
   text-align: center;
   border-radius: 4px;
   height: 2rem;
-  background-color: #00000000;
+  background-color: #000000;
   cursor: pointer;
 }
 #yes{
