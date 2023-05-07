@@ -14,7 +14,7 @@ export default function OrderEditor({ id, name, amount, changeOrder }) {
       <button type="button" id="btn" onClick={decreaseHandler}>
           -
         </button>
-      <p>
+      <p className="border-1">
         {name} x{amount}
       </p>
       <div>

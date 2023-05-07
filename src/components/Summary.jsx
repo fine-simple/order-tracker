@@ -46,7 +46,7 @@ export default function Summary({}) {
         />
         <span> %</span>
       </div>
-      <h5>Total: {total.toFixed(2)}</h5>
+      <p>Total: {total.toFixed(2)}</p>
     </article>
   );
 }

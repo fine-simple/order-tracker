@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { addItem } from "../js/reducers/itemSlice";
 import { useDispatch, useSelector } from "react-redux";
-import done from "../assets/done-v.png";
-import x from "../assets/close-x.png";
+import done from "../assets/check.svg";
+import x from "../assets/cross.svg";
 
 export default function NewOrder({ hideMenu, addOrder }) {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export default function NewOrder({ hideMenu, addOrder }) {
           required
         />
       </span>
-      <div className="btns">
+      <div className="btn">
         <button type="button" id="ok" onClick={addHandler}>
           <img src={done} alt="" />
         </button>

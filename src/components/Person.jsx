@@ -48,6 +48,7 @@ export default function Person({ id, name = "", orders = {} }) {
       )}
       {confirmVisible && (
         <Confirm
+        
           onOk={deletePersonHandler}
           onCancel={() => setConfirmVisible(false)}
           message="Are you sure you want to delete this person?"
