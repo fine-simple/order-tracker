@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import Person from "./Person";
 import { useSelector } from "react-redux";
 
@@ -8,6 +9,7 @@ export default function PersonList() {
   return (
     <>
       <section className="persons">
+      <Stack>
         {(Object.keys(persons).length !== 0 &&
           Object.entries(persons)
             .sort(([_, { name: name1 }], [__, { name: name2 }]) =>
@@ -16,6 +18,7 @@ export default function PersonList() {
             .map(([id, { name, items }]) => (
               <Person id={id} key={id} name={name} tax={tax} orders={items} />
             ))) || <p className="empty-list">Empty List</p>}
+      </Stack>
       </section>
     </>
   );

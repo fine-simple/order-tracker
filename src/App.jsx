@@ -2,6 +2,12 @@ import { useState } from "react";
 import AddModify from "./components/AddModify";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
+import { Button, Stack, styled } from "@mui/material";
+
+const Main = styled("main")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+}));
 
 function App() {
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
@@ -20,14 +26,16 @@ function App() {
       <header className="header">
         <h1>Order Helper</h1>
       </header>
-      <main>
+      <Main >
         <PersonList />
-        <a className="btn-add" type="button" onClick={showAddMenu}>
+        <Button onClick={showAddMenu} sx={{
+          margin: "1rem auto",
+        }}>
           Add New Order
-        </a>
+        </Button>
         <hr />
         <Summary />
-      </main>
+      </Main>
     </>
   );
 }
