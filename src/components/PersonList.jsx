@@ -9,7 +9,7 @@ export default function PersonList() {
   return (
     <>
       <section className="persons">
-      <Stack>
+      <Stack spacing={2}>
         {(Object.keys(persons).length !== 0 &&
           Object.entries(persons)
             .sort(([_, { name: name1 }], [__, { name: name2 }]) =>

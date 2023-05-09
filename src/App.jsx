@@ -7,6 +7,7 @@ import { Button, Stack, styled } from "@mui/material";
 const Main = styled("main")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
 }));
 
 function App() {
@@ -23,12 +24,9 @@ function App() {
   return (
     <>
       {addMenuVisible && <AddModify hideMenu={hideAddMenu} />}
-      <header className="header">
-        <h1>Order Helper</h1>
-      </header>
       <Main >
         <PersonList />
-        <Button onClick={showAddMenu} sx={{
+        <Button variant="contained" onClick={showAddMenu} sx={{
           margin: "1rem auto",
         }}>
           Add New Order
