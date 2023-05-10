@@ -2,6 +2,7 @@ import { useCallback, useId } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTax } from "../js/reducers/sharedSlice";
 import { Card, CardContent, CardHeader, TextField } from "@mui/material";
+import styled from "@emotion/styled";
 
 export default function Summary({}) {
   const dispatch = useDispatch();
@@ -32,19 +33,21 @@ export default function Summary({}) {
   const total = subTotal() * (1 + tax);
 
   return (
-    <Card sx={{
-      display: "flex",
-      flexDirection: "column",
-    }}>
+    <Card>
       <CardHeader title="Summary" />
       <CardContent>
-        <h4>Sub-total: {subTotal()}</h4>
+        <h3>Sub-total: {subTotal()}</h3>
       </CardContent>
       <CardContent>
-        <TextField id={taxInputId} label="Tax" placeholder="e.g. 14%" onChange={taxChangeHandler}/>
+        <TextField
+          id={taxInputId}
+          label="Tax"
+          placeholder="e.g. 14%"
+          onChange={taxChangeHandler}
+        />
       </CardContent>
       <CardContent>
-        <h5>Total: {total.toFixed(2)}</h5>
+        <h3>Total: {total.toFixed(2)}</h3>
       </CardContent>
     </Card>
   );
