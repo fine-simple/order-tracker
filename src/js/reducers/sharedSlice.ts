@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("shared")) ?? {
+const saved = localStorage.getItem("shared") ?? "";
+const initialState = JSON.parse(saved) ?? {
   tax: 0,
   tip: 0,
   discount: 0,
