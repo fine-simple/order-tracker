@@ -1,18 +1,20 @@
-import { useCallback, useId, useState } from "react";
+import { useCallback, useState } from "react";
 import Order from "./Order";
-import { useSelector, useDispatch } from "react-redux";
-import { removePerson } from "../js/reducers/personSlice";
-import edit from "../assets/ed.svg";
-import del from "../assets/del.svg";
+import { useSelector } from "../ts/hooks/redux";
 import AddModify from "./AddModify";
-import Confirm from "./Confirm";
-import { Card, CardHeader } from "@mui/material";
 import AccordionModify from "./AccordionModify";
+import type { FC } from "react";
 
-export default function Person({ id, name = "", orders = {} }) {
+interface IProps {
+  id: string | number;
+  name?: string;
+  orders?: { [id: number]: number };
+}
+
+const Person: FC<IProps> = ({ id, name = "", orders = {} }) => {
   const [editVisible, setEditVisible] = useState(false);
-  const items = useSelector((state) => state.items);
-  const tax = useSelector((state) => state.shared.tax);
+  const items = useSelector(state => state.items);
+  const tax = useSelector(state => state.shared.tax);
 
   const getTotalPrice = useCallback(
     () =>
@@ -24,9 +26,10 @@ export default function Person({ id, name = "", orders = {} }) {
     [orders, items, tax]
   );
 
-  const editClickedHandler = (e) => {
+  const editClickedHandler = () => {
     setEditVisible(true);
   };
+
   const hideMenu = () => {
     setEditVisible(false);
   };
@@ -49,4 +52,6 @@ export default function Person({ id, name = "", orders = {} }) {
       </AccordionModify>
     </>
   );
-}
+};
+
+export default Person;

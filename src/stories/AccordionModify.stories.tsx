@@ -1,6 +1,5 @@
 import AccordionModify from "../components/AccordionModify";
 import type { IAccordionModifyProps } from "../components/AccordionModify";
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {

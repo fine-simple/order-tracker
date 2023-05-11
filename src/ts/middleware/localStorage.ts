@@ -1,5 +1,7 @@
-const localStorageMiddleware = store => next => action => {
-  let result = next(action);
+import type { Middleware } from "redux";
+
+const localStorageMiddleware: Middleware = store => next => action => {
+  const result = next(action);
 
   const { persons, items, shared } = store.getState();
   const reducer = action.type.split("/")[0];

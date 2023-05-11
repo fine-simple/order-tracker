@@ -2,14 +2,10 @@ import { useState } from "react";
 import AddModify from "./components/AddModify";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
-import { Button, Stack, styled, Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
+import type { FC } from "react";
 
-const Main = styled("main")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-}));
-
-function App() {
+const App: FC = () => {
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
 
   const showAddMenu = () => {
@@ -40,6 +36,6 @@ function App() {
       </Grid>
     </>
   );
-}
+};
 
 export default App;

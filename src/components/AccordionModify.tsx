@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { AccordionActions, AccordionDetails, Button } from "@mui/material";
 import MuiAccordion from "@mui/material/Accordion";
@@ -53,7 +52,7 @@ const AccordionModify: FC<IAccordionModifyProps> = ({
   onEdit = () => {},
   ...props
 }) => {
-  const handleEdit: typeof onEdit = (e) => {
+  const handleEdit: typeof onEdit = e => {
     e.stopPropagation();
     onEdit(e);
   };

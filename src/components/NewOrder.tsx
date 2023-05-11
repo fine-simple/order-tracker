@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { addItem } from "../js/reducers/itemSlice";
+import { addItem } from "../ts/reducers/itemSlice/itemSlice";
 import { useDispatch, useSelector } from "react-redux";
 import done from "../assets/done-v.png";
 import x from "../assets/close-x.png";

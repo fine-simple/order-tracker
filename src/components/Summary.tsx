@@ -1,17 +1,17 @@
-import { useCallback, useId } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setTax } from "../js/reducers/sharedSlice";
+import { ChangeEvent, useCallback, useId } from "react";
+import { useSelector, useDispatch } from "../ts/hooks/redux";
+import { setTax } from "../ts/reducers/sharedSlice/sharedSlice";
 import { Card, CardContent, CardHeader, TextField } from "@mui/material";
-import styled from "@emotion/styled";
+import type { FC } from "react";
 
-export default function Summary({}) {
+const Summary: FC = () => {
   const dispatch = useDispatch();
 
   const taxInputId = useId();
-  const tax = useSelector((state) => state.shared.tax);
-  const persons = useSelector((state) => state.persons);
-  const availableItems = useSelector((state) => state.items);
-  const changeTax = (tax) => dispatch(setTax(tax));
+  const tax = useSelector(state => state.shared.tax);
+  const persons = useSelector(state => state.persons);
+  const availableItems = useSelector(state => state.items);
+  const changeTax = (tax: number) => dispatch(setTax(tax));
 
   const subTotal = useCallback(
     () =>
@@ -23,11 +23,12 @@ export default function Summary({}) {
           ) + acc,
         0
       ),
-    [persons]
+    [persons, availableItems]
   );
 
-  const taxChangeHandler = (e) => {
-    changeTax(e.target.value / 100);
+  const taxChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value) || 0;
+    changeTax(value / 100);
   };
 
   const total = subTotal() * (1 + tax);
@@ -51,4 +52,6 @@ export default function Summary({}) {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default Summary;

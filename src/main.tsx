@@ -1,29 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import store from "./js/store";
+import store from "./ts/store";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
+import theme from "./ts/theme";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1e88e5",
-    },
-  },
-  components: {
-    MuiTypography: {
-      styleOverrides: {
-        h1: {
-          fontSize: "2rem",
-        },
-      },
-    },
-  },
-});
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>

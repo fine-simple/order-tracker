@@ -1,51 +1,33 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addPerson } from "../js/reducers/personSlice";
+import { FormEvent, useState } from "react";
+import { useDispatch } from "../ts/hooks/redux";
+import { addPerson } from "../ts/reducers/personSlice/personSlice";
 import Modal from "./Modal/Modal";
-import OrderEditor from "./OrderEditor";
-import NewOrder from "./NewOrder";
+import type { FC } from "react";
+import OrdersEditor from "./OrdersEditor";
+import type { Items } from "../ts/reducers/personSlice/types";
 
-export default function AddModify({
+export interface IAddModifyProps {
+  hideMenu: () => void;
+  id?: string | number;
+  name?: string;
+  orders?: { [id: number]: number };
+}
+
+const AddModify: FC<IAddModifyProps> = ({
   hideMenu,
-  id = undefined,
+  id,
   name = "",
   orders: savedOrders = {},
-}) {
-  const availableOrders = useSelector(state => state.items);
+}) => {
   const dispatch = useDispatch();
-  const [orders, setOrders] = useState({ ...savedOrders });
-  const [addNewVisible, setAddNewVisible] = useState(false);
+  const [orders, setOrders] = useState<Items>({
+    ...savedOrders,
+  });
+  const [newName, setNewName] = useState<string>(name);
 
-  const changeOrderHandler = ({ id, amount }) => {
-    if (amount < 1) {
-      setOrders(prev => {
-        const newOrders = { ...prev };
-        delete newOrders[id];
-        return newOrders;
-      });
-      return;
-    }
-    const newOrder = { [id]: amount };
-    setOrders(prev => ({ ...prev, ...newOrder }));
-  };
-
-  const selectHandler = e => {
-    const option = e.target.value;
-    switch (option) {
-      case "undefined":
-        break;
-      case "add":
-        setAddNewVisible(true);
-        break;
-      default:
-        setOrders(prev => ({ ...prev, [option]: 1 }));
-        break;
-    }
-  };
-
-  const submitHandler = e => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    const name = newName;
 
     // validate input
     if (name.trim().length === 0) {
@@ -62,21 +44,14 @@ export default function AddModify({
     hideMenu();
   };
 
-  const hideAddNew = () => {
-    setAddNewVisible(false);
-  };
-
-  const addOrder = id => {
-    setOrders(prev => ({ ...prev, [id]: 1 }));
-  };
-
   return (
     <Modal onBackdropClick={hideMenu}>
       <form className="add-new" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
-            defaultValue={name}
+            value={newName}
+            onChange={e => setNewName(e.target.value)}
             type="text"
             id="name"
             placeholder="Your Name"
@@ -85,39 +60,7 @@ export default function AddModify({
         </div>
 
         <div className="form-group">
-          <fieldset>
-            <legend>Orders</legend>
-            <ul>
-              {Object.entries(orders).map(([id, amount]) => (
-                <OrderEditor
-                  name={availableOrders[id].name}
-                  id={id}
-                  key={id}
-                  amount={amount}
-                  changeOrder={changeOrderHandler}
-                />
-              ))}
-            </ul>
-            {addNewVisible && (
-              <NewOrder addOrder={addOrder} hideMenu={hideAddNew} />
-            )}
-            {!addNewVisible && (
-              <select id="order" value="undefined" onChange={selectHandler}>
-                <option value="undefined" disabled hidden>
-                  Add Order
-                </option>
-
-                {Object.keys(availableOrders)
-                  .filter(key => !orders[key])
-                  .map(id => (
-                    <option key={id} value={id}>
-                      {availableOrders[id].name}
-                    </option>
-                  ))}
-                <option value="add">Add New</option>
-              </select>
-            )}
-          </fieldset>
+          <OrdersEditor orders={orders} setOrders={setOrders} />
         </div>
         <button type="submit" className="add">
           {(id && "Save") || "Add"}
@@ -125,4 +68,6 @@ export default function AddModify({
       </form>
     </Modal>
   );
-}
+};
+
+export default AddModify;
