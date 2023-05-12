@@ -2,14 +2,11 @@ import { useState } from "react";
 import AddModify from "./components/AddModify";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
-import reset from "./assets/Refresh.svg"
-
+import reset from "./assets/Refresh.svg";
 
 function App() {
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
 
-
- 
   const showAddMenu = () => {
     setAddMenuVisibility(true);
   };
