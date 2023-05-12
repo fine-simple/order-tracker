@@ -3,8 +3,7 @@ import AddModify from "./components/AddModify";
 import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
 import reset from "./assets/Refresh.svg"
-import del from "./assets/del.svg";
-import { Refresh } from "./components/Refresh";
+
 
 function App() {
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
