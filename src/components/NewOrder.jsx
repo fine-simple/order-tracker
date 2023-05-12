@@ -33,7 +33,7 @@ export default function NewOrder({ hideMenu, addOrder }) {
         <input
           type="text"
           id="name"
-          placeholder="Name"
+          placeholder="Order"
           ref={nameRef}
           required
         />

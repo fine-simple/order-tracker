@@ -11,7 +11,7 @@ export default function OrderEditor({ id, name, amount, changeOrder }) {
 
   return (
     <li className="order-edit">
-      <button type="button" id="btn" onClick={decreaseHandler}>
+      <button type="button" id="btnminus" onClick={decreaseHandler}>
           -
         </button>
       <p className="border-1">

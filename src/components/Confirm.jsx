@@ -14,6 +14,7 @@ export default function Confirm({ onOk, onCancel, message }) {
             <button id="delete" onClick={onOk}>Delete</button>
           </span>
         </div>
+        
       </Modal>
     </div>
   );

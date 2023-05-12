@@ -10,12 +10,11 @@ import Confirm from "./Confirm";
 export default function Person({ id, name = "", orders = {} }) {
   const dispatch = useDispatch();
   const [editVisible, setEditVisible] = useState(false);
-  const [confirmVisible, setConfirmVisible] = useState(false);
   const items = useSelector(state => state.items);
   const tax = useSelector(state => state.shared.tax);
   const editId = useId();
   const deleteId = useId();
-
+  
   const getTotalPrice = useCallback(
     () =>
       Object.entries(orders).reduce(
@@ -23,15 +22,16 @@ export default function Person({ id, name = "", orders = {} }) {
         0
       ) *
       (1 + tax),
-    [orders, items, tax]
+      [orders, items, tax]
   );
-
+  
   const editClickedHandler = e => {
     setEditVisible(true);
   };
   const hideMenu = () => {
     setEditVisible(false);
   };
+  const [confirmVisible, setConfirmVisible] = useState(false);
 
   const deleteClickedHandler = e => {
     setConfirmVisible(true);
@@ -48,7 +48,6 @@ export default function Person({ id, name = "", orders = {} }) {
       )}
       {confirmVisible && (
         <Confirm
-        
           onOk={deletePersonHandler}
           onCancel={() => setConfirmVisible(false)}
           message="Are you sure you want to delete this person?"

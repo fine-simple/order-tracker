@@ -4,7 +4,6 @@ function Modal({ children, onBackdropClick }) {
   const backdropClickHandler = e => {
     if (e.target === e.currentTarget) onBackdropClick();
   };
-
   return (
     <>
       <div onClick={backdropClickHandler} className={classes.backdrop}>
@@ -13,6 +12,5 @@ function Modal({ children, onBackdropClick }) {
     </>
   );
 }
-
 export default props =>
   ReactDOM.createPortal(<Modal {...props} />, document.getElementById("modal"));

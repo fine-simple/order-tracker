@@ -18,7 +18,6 @@
   overflow: auto;
   max-height: 35rem;
 }
-
 main 
 {
   display: flex;
@@ -96,7 +95,7 @@ header button{
   font-size: 1.5rem;
   font-weight: 600;
 }
-.btn-add , .btn-edit {
+.btn-add  {
   font-size: 1rem;
   padding: 0.3rem;
   margin: .2rem auto;
@@ -107,7 +106,9 @@ header button{
   font-size: medium;
 }
 @media screen and (max-width: 30rem) {
-
+  #btnminus{
+    min-width: 2.7rem;
+   }
   .card,
   .card:hover {
     box-shadow: none;
@@ -120,7 +121,15 @@ header button{
     font-weight:400;
     padding-right: .3rem;
   }
-
+  .artcl input{
+    min-height: 5vh;
+   }
+   .add-new .add {
+    min-height: 6vh;
+  }
+  .add-new input {
+    min-height: 5.5vh;
+  }
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -176,7 +185,7 @@ input[type="number"] {
   box-shadow: 0rem 0.4rem 1rem rgba(10, 132, 245, 0.3);
   padding-left: 0.5rem;
   background-color: rgba(0, 0, 0, 0.703);
-  height: 4vh;
+  height: 4.5vh;
   font-size: 18px;
   font-weight: 500;
 }
@@ -238,34 +247,16 @@ select:hover {
   width: -webkit-fill-available;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
-.btn-edit{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.706);
-  border-color: rgb(0, 213, 255);
-  font-size: 19px;
-  color: rgb(237, 237, 237);
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight:500;
-  text-align: center;
-  width: 21rem;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-.btn-edit img{
-  padding-right: .3rem;
-  height: 2.5vh;
-}
 
-.btn-add , .btn-edit {
+
+.btn-add  {
   transform: translateY(-2px);
 }
-.btn-add:hover , .btn-edit:hover{
+.btn-add:hover {
   transform: translateY(-1px);
 
 }
-.btn-add:active , .btn-edit:active{
+.btn-add:active{
   transform: translateY(0px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -288,14 +279,22 @@ select:hover {
   .card:hover {
     box-shadow: none;
   }
+  .artcl input{
+    min-height: 5vh;
+   }
+   .add-new .add {
+    min-height: 6vh;
+  }
+  .add-new input {
+    min-height: 5.5vh;
+  }
 }
 .order-edit{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
-  background-color: #0000002e;
 }
 .order-edit button{
   display: flex;
@@ -317,7 +316,8 @@ select:hover {
 }
 ul{
   overflow: auto;
-  max-height: 10rem;
+  margin-top: auto;
+  max-height: 12rem;
   padding: .2rem;
 }
 
@@ -329,10 +329,6 @@ fieldset{
   border: 2px solid;
   border-color: rgb(0, 213, 255);
   border-radius: 4px;
-}
-.btn-edit:focus{
-  transform: translateY(-5px);
-  box-shadow: 0 5px 10px rgba(14, 212, 243, 0.2);
 }
 .btn-add:focus{
   transform: translateY(-5px);
@@ -387,7 +383,7 @@ select , input{
   width: 10rem;
 }
 .new-order #price{
-  width: 4.4rem;
+  width: 4.5rem;
 }
 .new-order #ok , #no{
   background-color: #000000;
@@ -425,9 +421,20 @@ select , input{
     display: flex;
     gap: .3rem;
   }
- 
+  #btnminus{
+    min-width: 2.7rem;
+   }
+   #btnminus{
+    min-width: 2.7rem;
+   }
   .artcl input{
    min-height: 5vh;
+  }
+  .add-new .add {
+    min-height: 6vh;
+  }
+  .add-new input {
+    min-height: 5.5vh;
   }
 }@media only screen and (max-width: 400px) 
 {
@@ -435,16 +442,20 @@ select , input{
     min-height: 6vh;
   }
   .add-new input {
-    min-height: 5.7vh;
+    min-height: 5.5vh;
   }
-  
   select{
     min-height: 5.7vh;
   }
   .artcl input{
     min-height: 5vh;
    }
-   
+   ul {
+    max-height: 13rem;
+   }
+   #btnminus{
+    min-width: 2.7rem;
+   }
 }
 .head{
   display: flex;
@@ -464,11 +475,12 @@ select , input{
   margin-top: 2rem;
   font-family:  Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-shadow: none;
-  background: rgb(70, 86, 86);
+  background: #c79847;
+  border-radius: 4px;
   font-weight: 400;
   font-size: 20px;
   padding-top: .2rem;
-  color: #ffffff;
+  color: #35231f;
 }
 .Confirm button{
 width: 50%;
@@ -505,10 +517,12 @@ border: none;}
 #delete{
   background-color: #f32f2f;
   color: white;
+  border-bottom-right-radius: 4px;
 }
 #cncl{
   background-color: #39b121;
   color: white;
+  border-bottom-left-radius: 4px;
 }
 #cancel:focus{
   transform: translate(1px);

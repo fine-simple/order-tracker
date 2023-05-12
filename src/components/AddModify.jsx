@@ -79,7 +79,7 @@ export default function AddModify({
             defaultValue={name}
             type="text"
             id="name"
-            placeholder="Your Name"
+            placeholder="💂John Doe"
             required
           />
         </div>
