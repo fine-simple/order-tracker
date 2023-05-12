@@ -6,8 +6,7 @@ export default function Confirm({ onOk, onCancel, message }) {
       <Modal onBackdropClick={onCancel}>
         <div className="Confirm">
           <span className="warn">
-              <p> {message}</p>
-             
+              <p> {message}</p>       
           </span>
           <span className="btns">  
             <button id="cncl" onClick={onCancel}>Cancel</button>

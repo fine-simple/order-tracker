@@ -205,7 +205,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("./assets/Frame 75.png");
+  background-image: url("./assets/BG.png");
   padding-bottom: 1.2rem;
 }
 select {
