@@ -21,7 +21,7 @@ function App() {
         <header className="header">
          <h1>Order Helper</h1>  
         </header>
-          <button className="reset" ><img src={reset} alt=""/></button>
+          {/* <button className="reset" ><img src={reset} alt=""/></button> */}
       </div>
       <main>
         <PersonList />
