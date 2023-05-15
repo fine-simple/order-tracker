@@ -1,9 +1,25 @@
 import { useState } from "react";
 import AddModify from "./components/AddModify";
-import PersonList from "./components/PersonList";
 import Summary from "./components/Summary";
-import { Button, Grid } from "@mui/material";
+import {
+  Button as button,
+  Grid,
+  Container as container,
+  styled,
+} from "@mui/material";
 import type { FC } from "react";
+import Switcher from "./components/Switcher";
+
+const Container = styled(container)(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+  minHeight: "100vh",
+  minWidth: "100vw",
+  padding: "1rem",
+}));
+
+const Button = styled(button)({
+  margin: "1rem auto",
+});
 
 const App: FC = () => {
   const [addMenuVisible, setAddMenuVisibility] = useState(false);
@@ -19,21 +35,17 @@ const App: FC = () => {
   return (
     <>
       {addMenuVisible && <AddModify hideMenu={hideAddMenu} />}
-      <Grid container justifyContent="center">
-        <Grid container flexDirection="column" md={5} item>
-          <PersonList />
-          <Button
-            variant="contained"
-            onClick={showAddMenu}
-            sx={{
-              margin: "1rem auto",
-            }}
-          >
-            Add New Order
-          </Button>
-          <Summary />
+      <Container>
+        <Grid container justifyContent="center">
+          <Grid container flexDirection="column" md={6} xl={4} sm={10} item>
+            <Switcher />
+            <Button variant="contained" onClick={showAddMenu}>
+              Add New Order
+            </Button>
+            <Summary />
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </>
   );
 };

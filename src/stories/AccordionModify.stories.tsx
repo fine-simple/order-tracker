@@ -8,8 +8,8 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     backgroundColor: { control: "color" },
+    onEdit: { action: "clicked" },
   },
-  actions: { argTypesRegex: "^on.*" },
 } as Meta<IAccordionModifyProps>;
 
 export const Default: StoryObj<IAccordionModifyProps> = {

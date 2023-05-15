@@ -4,14 +4,16 @@ import { useSelector } from "../ts/hooks/redux";
 import AddModify from "./AddModify";
 import AccordionModify from "./AccordionModify";
 import type { FC } from "react";
+import type { IAccordionModifyProps } from "./AccordionModify";
 
-interface IProps {
+interface IProps
+  extends Omit<IAccordionModifyProps, "id" | "title" | "children"> {
   id: string | number;
-  name?: string;
+  name: string;
   orders?: { [id: number]: number };
 }
 
-const Person: FC<IProps> = ({ id, name = "", orders = {} }) => {
+const Person: FC<IProps> = ({ id, name = "", orders = {}, ...props }) => {
   const [editVisible, setEditVisible] = useState(false);
   const items = useSelector(state => state.items);
   const tax = useSelector(state => state.shared.tax);
@@ -43,6 +45,7 @@ const Person: FC<IProps> = ({ id, name = "", orders = {} }) => {
         title={name}
         summary={`${getTotalPrice().toFixed(2)} L.E.`}
         onEdit={editClickedHandler}
+        {...props}
       >
         <ul>
           {Object.entries(orders).map(([id, amount]) => (

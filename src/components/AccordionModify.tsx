@@ -10,7 +10,7 @@ import type { AccordionSummaryProps } from "@mui/material/AccordionSummary";
 import type { MouseEventHandler } from "react";
 
 const Accordion = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={5} square {...props} />
+  <MuiAccordion disableGutters elevation={3} square {...props} />
 ))(() => ({
   "&:not(:last-child)": {
     borderBottom: 0,
@@ -49,7 +49,7 @@ const AccordionModify: FC<IAccordionModifyProps> = ({
   title,
   children,
   summary,
-  onEdit = () => {},
+  onEdit = () => null,
   ...props
 }) => {
   const handleEdit: typeof onEdit = e => {

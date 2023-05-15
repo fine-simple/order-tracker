@@ -1,7 +1,13 @@
 import { ChangeEvent, useCallback, useId } from "react";
 import { useSelector, useDispatch } from "../ts/hooks/redux";
 import { setTax } from "../ts/reducers/sharedSlice/sharedSlice";
-import { Card, CardContent, CardHeader, TextField } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  Typography,
+} from "@mui/material";
 import type { FC } from "react";
 
 const Summary: FC = () => {
@@ -34,10 +40,10 @@ const Summary: FC = () => {
   const total = subTotal() * (1 + tax);
 
   return (
-    <Card>
+    <Card elevation={3}>
       <CardHeader title="Summary" />
       <CardContent>
-        <h3>Sub-total: {subTotal()}</h3>
+        <Typography variant="h6">Sub-total: {subTotal()}</Typography>
       </CardContent>
       <CardContent>
         <TextField
@@ -48,7 +54,7 @@ const Summary: FC = () => {
         />
       </CardContent>
       <CardContent>
-        <h3>Total: {total.toFixed(2)}</h3>
+        <Typography variant="h6">Total: {total.toFixed(2)}</Typography>
       </CardContent>
     </Card>
   );
