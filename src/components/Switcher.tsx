@@ -1,35 +1,24 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FC } from "react";
-import { Tabs, Tab, Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Tabs, Tab } from "@mui/material";
 import { useState } from "react";
-// @ts-ignore-next-line
-import SwipeableViews from "react-swipeable-views-react-18-fix";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import PersonList from "./PersonList";
 import ItemsList from "./ItemsList";
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  dir?: string;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (value === index && <Box {...other}>{children}</Box>) || <></>;
-}
+import { Swiper as ISwiper } from "swiper/types";
 
 const Switcher: FC = () => {
   const [tab, setTab] = useState(0);
-  const theme = useTheme();
+  const [controlledSwiper, setControlledSwiper] = useState<ISwiper>();
 
   const handleTabChanged = (_: unknown, newValue: number) => {
     setTab(newValue);
+    controlledSwiper?.slideTo(newValue);
   };
-  const handleIndexChange = (index: number) => {
-    setTab(index);
+
+  const handleSwiped = (swiper: ISwiper) => {
+    setTab(swiper.snapIndex);
   };
 
   return (
@@ -38,14 +27,29 @@ const Switcher: FC = () => {
         <Tab label="persons" />
         <Tab label="items" />
       </Tabs>
-      <SwipeableViews index={tab} onChangeIndex={handleIndexChange}>
-        <TabPanel value={tab} index={0} dir={theme.direction}>
+      <Swiper
+        onSlideChange={handleSwiped}
+        onSwiper={swiper => setControlledSwiper(swiper)}
+        style={{
+          width: "100%",
+          maxHeight: "30%",
+        }}
+      >
+        <SwiperSlide
+          style={{
+            overflow: "auto",
+          }}
+        >
           <PersonList />
-        </TabPanel>
-        <TabPanel value={tab} index={1} dir={theme.direction}>
+        </SwiperSlide>
+        <SwiperSlide
+          style={{
+            overflow: "auto",
+          }}
+        >
           <ItemsList />
-        </TabPanel>
-      </SwipeableViews>
+        </SwiperSlide>
+      </Swiper>
     </>
   );
 };

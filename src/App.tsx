@@ -1,51 +1,82 @@
-import { useState } from "react";
-import AddModify from "./components/AddModify";
 import Summary from "./components/Summary";
 import {
+  AppBar,
+  Box,
   Button as button,
   Grid,
-  Container as container,
+  IconButton,
+  Menu,
+  MenuItem,
   styled,
+  Toolbar,
+  Typography,
 } from "@mui/material";
-import type { FC } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import { FC, useState } from "react";
 import Switcher from "./components/Switcher";
-
-const Container = styled(container)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  minHeight: "100vh",
-  minWidth: "100vw",
-  padding: "1rem",
-}));
 
 const Button = styled(button)({
   margin: "1rem auto",
 });
 
 const App: FC = () => {
-  const [addMenuVisible, setAddMenuVisibility] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const showAddMenu = () => {
-    setAddMenuVisibility(true);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
-  const hideAddMenu = () => {
-    setAddMenuVisibility(false);
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   return (
     <>
-      {addMenuVisible && <AddModify hideMenu={hideAddMenu} />}
-      <Container>
-        <Grid container justifyContent="center">
-          <Grid container flexDirection="column" md={6} xl={4} sm={10} item>
-            <Switcher />
-            <Button variant="contained" onClick={showAddMenu}>
-              Add New Order
-            </Button>
-            <Summary />
-          </Grid>
+      {/* TODO: Add header */}
+      {/* <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar> */}
+      <Grid container justifyContent="center">
+        <Grid container flexDirection="column" md={6} xl={4} sm={10} item>
+          <Switcher />
+          <Button variant="contained" title="add new order">
+            Add New Order
+          </Button>
+          <Summary />
         </Grid>
-      </Container>
+      </Grid>
     </>
   );
 };

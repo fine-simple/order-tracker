@@ -1,4 +1,5 @@
-import { ChangeEvent, useCallback, useId } from "react";
+import { useId, useMemo } from "react";
+import type { ChangeEvent } from "react";
 import { useSelector, useDispatch } from "../ts/hooks/redux";
 import { setTax } from "../ts/reducers/sharedSlice/sharedSlice";
 import {
@@ -19,7 +20,7 @@ const Summary: FC = () => {
   const availableItems = useSelector(state => state.items);
   const changeTax = (tax: number) => dispatch(setTax(tax));
 
-  const subTotal = useCallback(
+  const subTotal = useMemo(
     () =>
       Object.values(persons).reduce(
         (acc, { items }) =>
@@ -37,13 +38,13 @@ const Summary: FC = () => {
     changeTax(value / 100);
   };
 
-  const total = subTotal() * (1 + tax);
+  const total = useMemo(() => subTotal * (1 + tax), [subTotal, tax]);
 
   return (
-    <Card elevation={3}>
+    <Card>
       <CardHeader title="Summary" />
       <CardContent>
-        <Typography variant="h6">Sub-total: {subTotal()}</Typography>
+        <Typography variant="h6">Sub-total: {subTotal}</Typography>
       </CardContent>
       <CardContent>
         <TextField

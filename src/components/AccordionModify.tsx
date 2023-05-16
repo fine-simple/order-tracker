@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
-import { AccordionActions, AccordionDetails, Button } from "@mui/material";
+import {
+  AccordionActions,
+  AccordionDetails,
+  Button,
+  IconButton,
+} from "@mui/material";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import arrowIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -10,7 +15,7 @@ import type { AccordionSummaryProps } from "@mui/material/AccordionSummary";
 import type { MouseEventHandler } from "react";
 
 const Accordion = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={3} square {...props} />
+  <MuiAccordion disableGutters square {...props} />
 ))(() => ({
   "&:not(:last-child)": {
     borderBottom: 0,
@@ -63,9 +68,13 @@ const AccordionModify: FC<IAccordionModifyProps> = ({
         <Title>{title}</Title>
         <Summary>{summary}</Summary>
         <AccordionActions>
-          <Button onClick={handleEdit}>
+          <IconButton
+            onClick={handleEdit}
+            title={`edit ${title}`}
+            color="primary"
+          >
             <EditIcon />
-          </Button>
+          </IconButton>
         </AccordionActions>
       </AccordionSummary>
       <AccordionDetails>{children}</AccordionDetails>
