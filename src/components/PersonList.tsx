@@ -1,8 +1,14 @@
-import { Stack } from "@mui/material";
+import { Stack, Typography as typography, styled } from "@mui/material";
 import Person from "./Person";
 import { useSelector } from "../ts/hooks/redux";
 import { useState } from "react";
 import type { FC } from "react";
+
+const Typography = styled(typography)({
+  fontSize: "1.5rem",
+  textAlign: "center",
+  margin: "1rem auto",
+});
 
 const PersonList: FC = () => {
   const persons = useSelector(state => state.persons);
@@ -28,9 +34,9 @@ const PersonList: FC = () => {
 
   return (
     <>
-      <Stack spacing={2}>
+      <Stack spacing={2} justifyContent="center">
         {(Object.keys(persons).length !== 0 && mappedPersons) || (
-          <p>No orders yet</p>
+          <Typography>No orders yet</Typography>
         )}
       </Stack>
     </>

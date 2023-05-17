@@ -7,17 +7,7 @@ import {
 import type { FC } from "react";
 import OrdersEditor from "./OrdersEditor";
 import type { Items } from "../ts/reducers/personSlice/types";
-import {
-  Button,
-  Stack,
-  Grid,
-  TextField,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-} from "@mui/material";
+import { Button, Stack, Grid, TextField } from "@mui/material";
 import AlertDialog from "./AlertDialog";
 
 export interface IAddModifyProps {
@@ -91,8 +81,8 @@ const AddModify: FC<IAddModifyProps> = ({
                 Delete
               </Button>
               <AlertDialog
-                handleClose={handleClose}
-                handleDelete={handleDelete}
+                onClose={handleClose}
+                onDelete={handleDelete}
                 sureDialog={sureDialog}
               />
             </>

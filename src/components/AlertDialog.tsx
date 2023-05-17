@@ -10,25 +10,37 @@ import {
 
 export interface IAlertDialogProps {
   sureDialog: boolean;
-  handleClose: () => void;
-  handleDelete: () => void;
+  onClose: () => void;
+  onCancel?: () => void;
+  onDelete: () => void;
 }
 
 const AlertDialog: FC<IAlertDialogProps> = ({
   sureDialog,
-  handleClose,
-  handleDelete,
+  onClose,
+  onCancel = onClose,
+  onDelete,
 }) => {
+  const handleDelete = () => {
+    onDelete();
+    onClose();
+  };
+
+  const handleCancel = () => {
+    onCancel();
+    onClose();
+  };
+
   return (
-    <Dialog open={sureDialog} onClose={handleClose}>
+    <Dialog open={sureDialog} onClose={onClose}>
       <DialogTitle>Are you sure?</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Are you sure you want to delete this person?
+          Are you sure you want to delete it permanently?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleCancel}>Cancel</Button>
         <Button onClick={handleDelete} color="error">
           Delete
         </Button>

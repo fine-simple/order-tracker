@@ -7,9 +7,9 @@ import type {
   DecreaseItemAction,
   IncreaseItemAction,
 } from "./types";
+import { clearAll, loadFromLocalStorage } from "../../actions";
 
-const initialState: Persons =
-  JSON.parse(localStorage.getItem("persons") as string) ?? {};
+const initialState: Persons = {};
 
 const personSlice = createSlice({
   name: "person",
@@ -36,6 +36,15 @@ const personSlice = createSlice({
       const { personId, itemId } = action.payload;
       state[personId].items[itemId] += 1;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(clearAll, () => initialState);
+    builder.addCase(loadFromLocalStorage, () => {
+      const data = JSON.parse(localStorage.getItem("persons") as string);
+      if (data) {
+        return data;
+      }
+    });
   },
 });
 

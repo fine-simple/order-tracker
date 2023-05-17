@@ -51,6 +51,8 @@ const Summary: FC = () => {
           id={taxInputId}
           label="Tax"
           placeholder="e.g. 14%"
+          type="number"
+          value={(tax * 100).toFixed(0)}
           onChange={taxChangeHandler}
         />
       </CardContent>

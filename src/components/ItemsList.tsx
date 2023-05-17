@@ -1,9 +1,15 @@
 import type { FC } from "react";
 import { useMemo } from "react";
 import { useSelector } from "../ts/hooks/redux";
-import { List, Stack } from "@mui/material";
+import { List, Typography as typography, styled } from "@mui/material";
 import { Items } from "../ts/reducers/personSlice/types";
 import Item from "./Item";
+
+const Typography = styled(typography)({
+  fontSize: "1.5rem",
+  textAlign: "center",
+  margin: "1rem auto",
+});
 
 const ItemsList: FC = () => {
   const items = useSelector(state => state.items);
@@ -32,12 +38,18 @@ const ItemsList: FC = () => {
       Object.entries(items)
         .filter(([id]) => itemsCount[id] > 0)
         .map(([id, { name, price }]) => (
-          <Item key={id} name={name} price={price} amount={itemsCount[id]} />
+          <Item key={id} id={id} name={name} price={price} amount={itemsCount[id]} />
         )),
     [items, itemsCount]
   );
 
-  return <List>{mappedItems}</List>;
+  return (
+    <List>
+      {(mappedItems.length && mappedItems) || (
+        <Typography>No items yet</Typography>
+      )}
+    </List>
+  );
 };
 
 export default ItemsList;

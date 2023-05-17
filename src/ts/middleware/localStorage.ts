@@ -16,6 +16,11 @@ const localStorageMiddleware: Middleware = store => next => action => {
     case "shared":
       localStorage.setItem("shared", JSON.stringify(shared));
       break;
+    case "CLEAR_ALL":
+      localStorage.removeItem("persons");
+      localStorage.removeItem("items");
+      localStorage.removeItem("shared");
+      break;
   }
 
   return result;

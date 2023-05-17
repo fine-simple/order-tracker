@@ -46,39 +46,48 @@ const EditItem: FC<IEditItemProps> = ({
   };
 
   return (
-    <Grid container gap={2} justifyContent="center">
+    <Grid
+      container
+      gap={2}
+      justifyContent="center"
+      flexDirection="column"
+      padding="1rem"
+    >
       <TextField
         label="Name"
         size="small"
-        value={name}
+        defaultValue={defaultName}
         onChange={e => setName(e.target.value)}
       />
       <TextField
         label="Price"
         size="small"
-        value={price}
+        type="number"
+        defaultValue={defaultPrice}
         onChange={e => setPrice(Number(e.target.value))}
       />
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        onClick={addHandler}
-        color="primary"
-      >
-        <CheckIcon />
-      </IconButton>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        onClick={cancelHandler}
-        color="error"
-      >
-        <CancelIcon />
-      </IconButton>
+      <Grid container justifyContent="center">
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={addHandler}
+          color="primary"
+        >
+          <CheckIcon />
+        </IconButton>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={cancelHandler}
+          color="error"
+        >
+          <CancelIcon />
+        </IconButton>
+      </Grid>
     </Grid>
   );
 };

@@ -8,8 +8,9 @@ import type {
   SetTaxAction,
   SetTipAction,
 } from "./types";
+import { clearAll, loadFromLocalStorage } from "../../actions";
 
-const initialState: Shared = JSON.parse(localStorage.getItem("shared") as string) ?? {
+const initialState: Shared = {
   tax: 0,
   tip: 0,
   discount: 0,
@@ -43,6 +44,15 @@ const sharedSlice = createSlice({
     setDiscount(state, action: SetDiscountAction) {
       state.discount = action.payload;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(clearAll, () => initialState);
+    builder.addCase(loadFromLocalStorage, () => {
+      const data = JSON.parse(localStorage.getItem("shared") as string);
+      if (data) {
+        return data;
+      }
+    });
   },
 });
 
