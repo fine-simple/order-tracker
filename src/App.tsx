@@ -10,10 +10,12 @@ import {
   styled,
   Toolbar,
   Typography,
+  Dialog,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { FC, useState } from "react";
 import Switcher from "./components/Switcher";
+import AddModify from "./components/AddModify";
 
 const Button = styled(button)({
   margin: "1rem auto",
@@ -21,9 +23,16 @@ const Button = styled(button)({
 
 const App: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [showAddNew, setShowAddNew] = useState<boolean>(false);
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleCloseDialog = () => {
+    setShowAddNew(false);
+  };
+  const handleOpenAddDialog = () => {
+    setShowAddNew(true);
   };
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -71,9 +80,16 @@ const App: FC = () => {
       <Grid container justifyContent="center">
         <Grid container flexDirection="column" md={6} xl={4} sm={10} item>
           <Switcher />
-          <Button variant="contained" title="add new order">
+          <Button
+            variant="contained"
+            title="add new order"
+            onClick={handleOpenAddDialog}
+          >
             Add New Order
           </Button>
+          <Dialog open={showAddNew} onClose={handleCloseDialog}>
+            <AddModify onSave={handleCloseDialog} />
+          </Dialog>
           <Summary />
         </Grid>
       </Grid>

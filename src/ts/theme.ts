@@ -27,6 +27,17 @@ const theme = createTheme({
       color: "#e8e8ea",
     },
   },
+  components: {
+    MuiDialog: {
+      defaultProps: {
+        PaperProps: {
+          sx: {
+            width: "100%"
+          }
+        }
+      }
+    }
+  }
 });
 
 export default theme;

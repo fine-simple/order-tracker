@@ -14,7 +14,7 @@ const ItemsList: FC = () => {
       Object.values(persons).reduce((acc, person): Items => {
         return Object.entries(person.items).reduce(
           (ac, [id, amount]) => {
-            if (ac[id]) {
+            if (ac[id] && amount > 0) {
               ac[id] += amount;
             } else {
               ac[id] = amount;
@@ -27,13 +27,17 @@ const ItemsList: FC = () => {
     [persons]
   );
 
-  return (
-    <List>
-      {Object.entries(items).map(([id, { name, price }]) => (
-        <Item name={name} price={price} amount={itemsCount[id]} />
-      ))}
-    </List>
+  const mappedItems = useMemo(
+    () =>
+      Object.entries(items)
+        .filter(([id]) => itemsCount[id] > 0)
+        .map(([id, { name, price }]) => (
+          <Item key={id} name={name} price={price} amount={itemsCount[id]} />
+        )),
+    [items, itemsCount]
   );
+
+  return <List>{mappedItems}</List>;
 };
 
 export default ItemsList;

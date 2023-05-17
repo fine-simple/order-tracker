@@ -19,7 +19,7 @@ type AddPersonAction = PayloadAction<{
   items: Items;
 }>;
 
-type RemovePersonAction = PayloadAction<number>;
+type RemovePersonAction = PayloadAction<number | string>;
 
 type AddItemAction = PayloadAction<{
   personId: number;

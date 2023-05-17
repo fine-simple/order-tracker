@@ -1,33 +1,47 @@
 import { FormEvent, useState } from "react";
 import { useDispatch } from "../ts/hooks/redux";
-import { addPerson } from "../ts/reducers/personSlice/personSlice";
-import Modal from "./Modal/Modal";
+import {
+  addPerson,
+  removePerson,
+} from "../ts/reducers/personSlice/personSlice";
 import type { FC } from "react";
 import OrdersEditor from "./OrdersEditor";
 import type { Items } from "../ts/reducers/personSlice/types";
+import {
+  Button,
+  Stack,
+  Grid,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+} from "@mui/material";
+import AlertDialog from "./AlertDialog";
 
 export interface IAddModifyProps {
-  hideMenu: () => void;
+  onSave?: () => void;
   id?: string | number;
   name?: string;
   orders?: { [id: number]: number };
 }
 
 const AddModify: FC<IAddModifyProps> = ({
-  hideMenu,
+  onSave = () => null,
   id,
-  name = "",
+  name: defaultName = "",
   orders: savedOrders = {},
 }) => {
   const dispatch = useDispatch();
   const [orders, setOrders] = useState<Items>({
     ...savedOrders,
   });
-  const [newName, setNewName] = useState<string>(name);
+  const [name, setName] = useState<string>(defaultName);
+  const [sureDialog, setSureDialog] = useState<boolean>(false);
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const name = newName;
 
     // validate input
     if (name.trim().length === 0) {
@@ -41,32 +55,51 @@ const AddModify: FC<IAddModifyProps> = ({
       items: orders,
     };
     dispatch(addPerson(newPerson));
-    hideMenu();
+    onSave();
   };
 
-  return (
-    <Modal onBackdropClick={hideMenu}>
-      <form className="add-new" onSubmit={submitHandler}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            value={newName}
-            onChange={e => setNewName(e.target.value)}
-            type="text"
-            id="name"
-            placeholder="Your Name"
-            required
-          />
-        </div>
+  const handleDelete = () => {
+    if (id) dispatch(removePerson(id));
+  };
+  const handleClose = () => setSureDialog(false);
 
-        <div className="form-group">
-          <OrdersEditor orders={orders} setOrders={setOrders} />
-        </div>
-        <button type="submit" className="add">
-          {(id && "Save") || "Add"}
-        </button>
-      </form>
-    </Modal>
+  const showSureDialog = () => setSureDialog(true);
+
+  return (
+    <form autoComplete="off" onSubmit={handleSubmit}>
+      <Stack
+        gap={2}
+        margin="2rem"
+        justifyContent="center"
+        alignItems={"center"}
+      >
+        <TextField
+          label="Name"
+          value={name}
+          required
+          onChange={e => setName(e.target.value)}
+          size="small"
+        />
+        <OrdersEditor orders={orders} setOrders={setOrders} />
+        <Grid container justifyContent="center">
+          <Button type="submit" size="small">
+            {(id && "Save") || "Add"}
+          </Button>
+          {id && (
+            <>
+              <Button size="small" color="error" onClick={showSureDialog}>
+                Delete
+              </Button>
+              <AlertDialog
+                handleClose={handleClose}
+                handleDelete={handleDelete}
+                sureDialog={sureDialog}
+              />
+            </>
+          )}
+        </Grid>
+      </Stack>
+    </form>
   );
 };
 

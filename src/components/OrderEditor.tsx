@@ -1,5 +1,18 @@
 import type { FC } from "react";
 import type { OrderPayload } from "./OrdersEditor";
+import {
+  ListItem as listItem,
+  IconButton,
+  Typography,
+  styled,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
+const ListItem = styled(listItem)({
+  justifyContent: "center",
+  gap: "0.5rem",
+});
 
 export interface IOrderEditorProps {
   id: string | number;
@@ -25,19 +38,19 @@ const OrderEditor: FC<IOrderEditorProps> = ({
   };
 
   return (
-    <li className="order-edit">
-      <button type="button" id="btn" onClick={decreaseHandler}>
-        -
-      </button>
-      <p>
+    <ListItem>
+      <IconButton color="secondary" onClick={decreaseHandler}>
+        <RemoveIcon />
+      </IconButton>
+      <Typography>
         {name} x{amount}
-      </p>
+      </Typography>
       <div>
-        <button type="button" onClick={increaseHandler}>
-          +
-        </button>
+        <IconButton color="secondary" onClick={increaseHandler}>
+          <AddIcon />
+        </IconButton>
       </div>
-    </li>
+    </ListItem>
   );
 };
 
