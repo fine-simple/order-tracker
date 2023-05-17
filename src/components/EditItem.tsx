@@ -56,6 +56,8 @@ const EditItem: FC<IEditItemProps> = ({
       <TextField
         label="Name"
         size="small"
+        autoComplete="off"
+        autoCapitalize="on"
         defaultValue={defaultName}
         onChange={e => setName(e.target.value)}
       />

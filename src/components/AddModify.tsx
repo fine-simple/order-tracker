@@ -66,15 +66,14 @@ const AddModify: FC<IAddModifyProps> = ({
         <TextField
           label="Name"
           value={name}
+          autoComplete="off"
+          autoCapitalize="on"
           required
           onChange={e => setName(e.target.value)}
           size="small"
         />
         <OrdersEditor orders={orders} setOrders={setOrders} />
         <Grid container justifyContent="center">
-          <Button type="submit" size="small">
-            {(id && "Save") || "Add"}
-          </Button>
           {id && (
             <>
               <Button size="small" color="error" onClick={showSureDialog}>
@@ -87,6 +86,9 @@ const AddModify: FC<IAddModifyProps> = ({
               />
             </>
           )}
+          <Button type="submit" size="small">
+            {(id && "Save") || "Add"}
+          </Button>
         </Grid>
       </Stack>
     </form>
