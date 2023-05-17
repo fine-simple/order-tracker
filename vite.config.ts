@@ -14,9 +14,8 @@ export default defineConfig({
         icons: [
           {
             src: "/pizza.png",
-            sizes: "512x512",
+            sizes: "100x100",
             type: "image/png",
-            purpose: "any maskable",
           },
         ],
         background_color: "#121212",
