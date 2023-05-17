@@ -41,7 +41,8 @@ export const SwipeableContainer = styled.section<ISwipeContainer>`
   width: ${({ viewCount }) => `${viewCount * 100}%`};
   display: flex;
   position: relative;
-  height: inherit;
+  height: 20rem;
+  overflowy: auto;
   transform: ${({ transform }) => transform};
   /* transition: 0.5s ease-in-out; */
 `;
@@ -60,25 +61,22 @@ const SwipeableViewsComponent: React.FC<SwipeViewProps> = (
   const { views, onSwipe, inkBarRef: hrRef, selectedView } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const touchData = useRef<ITouchData>();
-  const isExtreme = useCallback(
-    () => {
-      if (!touchData.current) return;
-      // const selectedTab = tabLabels.current.indexOf(selectedTabName);
-      if (
-        (selectedView === 0 &&
-          Math.abs(touchData.current.deltaX) /
-            safeGet(touchData, "current.deltaX", 1) ===
-            1) ||
-        (selectedView === views.length - 1 &&
-          Math.abs(touchData.current.deltaX) /
-            safeGet(touchData, "current.deltaX", 1) ===
-            -1)
-      )
-        return true;
-      return false;
-    },
-    [selectedView, views, touchData]
-  );
+  const isExtreme = useCallback(() => {
+    if (!touchData.current) return;
+    // const selectedTab = tabLabels.current.indexOf(selectedTabName);
+    if (
+      (selectedView === 0 &&
+        Math.abs(touchData.current.deltaX) /
+          safeGet(touchData, "current.deltaX", 1) ===
+          1) ||
+      (selectedView === views.length - 1 &&
+        Math.abs(touchData.current.deltaX) /
+          safeGet(touchData, "current.deltaX", 1) ===
+          -1)
+    )
+      return true;
+    return false;
+  }, [selectedView, views, touchData]);
 
   const isTargetBlacklisted = useCallback(
     e => {

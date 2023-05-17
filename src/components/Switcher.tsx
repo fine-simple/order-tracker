@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FC } from "react";
-import { Tabs, Tab, Stack } from "@mui/material";
+import { Tabs, Tab, Stack, styled } from "@mui/material";
 import { useState } from "react";
 import PersonList from "./PersonList";
 import ItemsList from "./ItemsList";
 import { SwipeableViews } from "./SwipableTabs";
+
+const StyledStack = styled(Stack)(() => ({
+  width: "100%",
+  overflow: "hidden",
+}));
 
 const Switcher: FC = () => {
   const [tab, setTab] = useState(0);
@@ -18,12 +23,7 @@ const Switcher: FC = () => {
   };
 
   return (
-    <Stack
-      sx={{
-        width: "100%",
-        overflow: "hidden",
-      }}
-    >
+    <StyledStack>
       <Tabs variant="fullWidth" value={tab} onChange={handleTabChanged}>
         <Tab label="persons" />
         <Tab label="items" />
@@ -34,7 +34,7 @@ const Switcher: FC = () => {
         onSwipe={handleSwiped}
         inkBarRef={null}
       />
-    </Stack>
+    </StyledStack>
   );
 };
 
