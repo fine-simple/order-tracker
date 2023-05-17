@@ -10,15 +10,15 @@ export default defineConfig({
       manifest: {
         name: "Group Order",
         short_name: "Group Order",
-        theme_color: "#121212",
+        theme_color: "#ee6c13",
+        background_color: "#121212",
         icons: [
           {
-            src: "/pizza.png",
-            sizes: "100x100",
+            src: "/icon.png",
+            sizes: "400x400",
             type: "image/png",
           },
         ],
-        background_color: "#121212",
         description:
           "A simple web application that allows users to create orders for making group order easier.",
         display: "standalone",
