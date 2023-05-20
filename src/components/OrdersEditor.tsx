@@ -98,7 +98,7 @@ const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
             size="small"
           >
             <MenuItem value="undefined" disabled hidden>
-              Add Order
+              Add Item
             </MenuItem>
 
             {availableOrders.map(([id, { name }]) => (

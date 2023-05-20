@@ -1,13 +1,7 @@
 import Header from "./components/Header";
 import { useDispatch } from "./ts/hooks/redux";
 import { loadFromLocalStorage } from "./ts/actions";
-import {
-  Button as button,
-  Grid,
-  styled,
-  Dialog,
-  Typography,
-} from "@mui/material";
+import { Button as button, Grid, styled, Dialog } from "@mui/material";
 import { useState, useEffect, lazy, Suspense } from "react";
 import type { FC } from "react";
 
@@ -36,15 +30,11 @@ const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <Suspense
-      fallback={
-        <Typography variant="body1" color="InfoText">
-          Loading...
-        </Typography>
-      }
-    >
+    <Suspense fallback={null}>
       <Dialog open={showAddNew} onClose={handleCloseAddNewDialog}>
-        <AddModify onSave={handleCloseAddNewDialog} />
+        <Suspense fallback={null}>
+          <AddModify onSave={handleCloseAddNewDialog} />
+        </Suspense>
       </Dialog>
       <Grid container alignItems="center" flexDirection="column">
         <Grid container flexDirection="column" md={6} xl={4} sm={10} item>

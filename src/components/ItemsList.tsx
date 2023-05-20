@@ -1,14 +1,13 @@
 import type { FC } from "react";
 import { useMemo } from "react";
 import { useSelector } from "../ts/hooks/redux";
-import { List, Typography as typography, styled } from "@mui/material";
-import { Items } from "../ts/reducers/personSlice/types";
+import { List, Typography as typography, styled, Stack } from "@mui/material";
+import type { Items } from "../ts/reducers/personSlice/types";
 import Item from "./Item";
 
 const Typography = styled(typography)({
   fontSize: "1.5rem",
   textAlign: "center",
-  margin: "1rem auto",
 });
 
 const ItemsList: FC = () => {
@@ -38,17 +37,23 @@ const ItemsList: FC = () => {
       Object.entries(items)
         .filter(([id]) => itemsCount[id] > 0)
         .map(([id, { name, price }]) => (
-          <Item key={id} id={id} name={name} price={price} amount={itemsCount[id]} />
+          <Item
+            key={id}
+            id={id}
+            name={name}
+            price={price}
+            amount={itemsCount[id]}
+          />
         )),
     [items, itemsCount]
   );
 
   return (
-    <List>
-      {(mappedItems.length && mappedItems) || (
-        <Typography>No items yet</Typography>
+    <Stack spacing={2} justifyContent="center" height="100%">
+      {(mappedItems.length && <List>{mappedItems}</List>) || (
+        <Typography>No Items yet</Typography>
       )}
-    </List>
+    </Stack>
   );
 };
 

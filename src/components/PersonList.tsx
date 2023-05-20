@@ -34,7 +34,7 @@ const PersonList: FC = () => {
 
   return (
     <>
-      <Stack spacing={2} justifyContent="center">
+      <Stack spacing={2} justifyContent="center" height="100%">
         {(Object.keys(persons).length !== 0 && mappedPersons) || (
           <Typography>No orders yet</Typography>
         )}
