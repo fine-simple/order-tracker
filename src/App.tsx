@@ -1,12 +1,19 @@
-import Summary from "./components/Summary";
-import Switcher from "./components/Switcher";
-import AddModify from "./components/AddModify";
 import Header from "./components/Header";
 import { useDispatch } from "./ts/hooks/redux";
 import { loadFromLocalStorage } from "./ts/actions";
-import { Button as button, Grid, styled, Dialog } from "@mui/material";
-import { useState, useEffect } from "react";
+import {
+  Button as button,
+  Grid,
+  styled,
+  Dialog,
+  Typography,
+} from "@mui/material";
+import { useState, useEffect, lazy, Suspense } from "react";
 import type { FC } from "react";
+
+const Switcher = lazy(() => import("./components/Switcher"));
+const Summary = lazy(() => import("./components/Summary"));
+const AddModify = lazy(() => import("./components/AddModify"));
 
 const Button = styled(button)({
   margin: "1rem auto",
@@ -29,7 +36,13 @@ const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Suspense
+      fallback={
+        <Typography variant="body1" color="InfoText">
+          Loading...
+        </Typography>
+      }
+    >
       <Dialog open={showAddNew} onClose={handleCloseAddNewDialog}>
         <AddModify onSave={handleCloseAddNewDialog} />
       </Dialog>
@@ -47,7 +60,7 @@ const App: FC = () => {
           <Summary />
         </Grid>
       </Grid>
-    </>
+    </Suspense>
   );
 };
 
