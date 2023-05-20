@@ -265,31 +265,15 @@ const SwipeableViewsComponent: React.FC<SwipeViewProps> = (
     el.style.transition = "0.1s ease-in-out";
   }, [selectedView, containerRef, views]);
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    el.addEventListener("touchstart", handlePanStart, false);
-    el.addEventListener("touchend", handlePanEnd, false);
-    el.addEventListener("touchcancel", handlePanEnd, false);
-    el.addEventListener("touchmove", handlePanMove, false);
-    el.addEventListener("mousedown", handlePanStart, false);
-    el.addEventListener("mouseup", handlePanEnd, false);
-    el.addEventListener("mousemove", handlePanMove, false);
-    // el.addEventListener("mouseout", handlePanEnd, false);
-    return () => {
-      el.removeEventListener("touchstart", handlePanStart, false);
-      el.removeEventListener("touchend", handlePanEnd, false);
-      el.removeEventListener("touchcancel", handlePanEnd, false);
-      el.removeEventListener("touchmove", handlePanMove, false);
-      el.removeEventListener("mousedown", handlePanStart, false);
-      el.removeEventListener("mouseup", handlePanEnd, false);
-      el.removeEventListener("mousemove", handlePanMove, false);
-      // el.removeEventListener("mouseout", handlePanEnd, false);
-    };
-  }, [containerRef, handlePanStart, handlePanMove, handlePanEnd]);
-
   return (
     <SwipeableContainer
+      onTouchStart={handlePanStart}
+      onMouseDown={handlePanStart}
+      onTouchEnd={handlePanEnd}
+      onTouchCancel={handlePanEnd}
+      onMouseUp={handlePanEnd}
+      onTouchMove={handlePanMove}
+      onMouseMove={handlePanMove}
       ref={containerRef}
       transform={`translateX(-${(selectedView / views.length) * 100}%)`}
       viewCount={safeGet(props, "views.length", 0)}
