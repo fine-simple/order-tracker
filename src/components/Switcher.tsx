@@ -25,7 +25,7 @@ const Switcher: FC = () => {
   return (
     <StyledStack>
       <Tabs variant="fullWidth" value={tab} onChange={handleTabChanged}>
-        <Tab label="persons" />
+        <Tab label="orders" />
         <Tab label="items" />
       </Tabs>
       <SwipeableViews

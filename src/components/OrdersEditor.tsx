@@ -73,7 +73,7 @@ const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
 
   return (
     <Fieldset>
-      <legend>Orders</legend>
+      <legend>Items</legend>
       <Stack justifyContent="center">
         <List>
           {Object.entries(orders).map(([id, amount]) => (
