@@ -7,7 +7,7 @@ import type { FC } from "react";
 const Typography = styled(typography)({
   fontSize: "1.5rem",
   textAlign: "center",
-  margin: "1rem auto",
+  margin: "auto",
 });
 
 const PersonList: FC = () => {
@@ -34,7 +34,7 @@ const PersonList: FC = () => {
 
   return (
     <>
-      <Stack spacing={2} justifyContent="center" height="100%">
+      <Stack spacing={2} height="100%">
         {(Object.keys(persons).length !== 0 && mappedPersons) || (
           <Typography>No orders yet</Typography>
         )}

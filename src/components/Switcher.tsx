@@ -8,7 +8,7 @@ import { SwipeableViews } from "./SwipableTabs";
 
 const StyledStack = styled(Stack)(() => ({
   width: "100%",
-  overflow: "hidden",
+  overflowX: "hidden",
 }));
 
 const Switcher: FC = () => {

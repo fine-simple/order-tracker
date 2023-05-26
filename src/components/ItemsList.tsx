@@ -7,7 +7,7 @@ import Item from "./Item";
 
 const Typography = styled(typography)({
   fontSize: "1.5rem",
-  textAlign: "center",
+  margin: "auto",
 });
 
 const ItemsList: FC = () => {
@@ -49,7 +49,7 @@ const ItemsList: FC = () => {
   );
 
   return (
-    <Stack spacing={2} justifyContent="center" height="100%">
+    <Stack spacing={2} height="100%">
       {(mappedItems.length && <List>{mappedItems}</List>) || (
         <Typography>No Items yet</Typography>
       )}
