@@ -1,14 +1,22 @@
 import { useState, useMemo } from "react";
-import type { ChangeEvent, FC } from "react";
+import type { SyntheticEvent } from "react";
+import type { FC } from "react";
+import {
+  List,
+  Stack,
+  styled,
+  FormControl,
+  Autocomplete,
+  TextField,
+  createFilterOptions,
+} from "@mui/material";
+
 import { useSelector } from "../ts/hooks/redux";
 import OrderEditor from "./OrderEditor";
 import EditItem from "./EditItem";
 import type { Items } from "../ts/reducers/personSlice/types";
-import { List, TextField, MenuItem, Stack, styled } from "@mui/material";
+import { Item } from "../ts/reducers/itemSlice/types";
 
-const StyledTextField = styled(TextField)({
-  margin: "auto",
-});
 const Fieldset = styled("fieldset")({
   margin: "1rem",
   padding: "1rem",
@@ -16,14 +24,21 @@ const Fieldset = styled("fieldset")({
   width: "80%",
 });
 
+const emptyItem = ["", { name: "", price: 0 }] as [string, Item];
+
 export type OrderPayload = { id: number | string; amount: number };
 export interface IOrdersEditorProps {
   orders: Items;
   setOrders: React.Dispatch<React.SetStateAction<Items>>;
 }
 
+const filter = createFilterOptions<[string, Item]>();
+
 const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
   const allOrders = useSelector(state => state.items);
+
+  const [addNewVisible, setAddNewVisible] = useState(false);
+  const [value, setValue] = useState<[string, Item] | null>(null);
 
   const availableOrders = useMemo(
     () =>
@@ -33,29 +48,41 @@ const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
     [allOrders, orders]
   );
 
-  const [addNewVisible, setAddNewVisible] = useState(false);
-  const selectHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const option = e.target.value;
+  const handleChange = (
+    _: SyntheticEvent<Element, Event>,
+    newValue: [string, Item] | null,
+    reason: string
+  ) => {
+    if (!newValue) return;
 
-    switch (option) {
-      case "undefined":
+    switch (reason) {
+      case "selectOption":
+        if (newValue[0].startsWith("Add ")) {
+          setAddNewVisible(true);
+          setValue(newValue);
+        } else {
+          setOrders(prev => ({ ...prev, [newValue[0]]: 1 }));
+          setValue(emptyItem);
+        }
         break;
-      case "add":
-        setAddNewVisible(true);
+      case "clear":
+        setValue(emptyItem);
         break;
       default:
-        setOrders((prev: Items) => ({ ...prev, [option]: 1 }));
+        setValue(newValue);
         break;
     }
   };
 
   const hideAddNew = () => {
     setAddNewVisible(false);
+    setValue(emptyItem);
   };
 
   const addOrder = (id: number | string) => {
     setOrders(prev => ({ ...prev, [id]: 1 }));
     setAddNewVisible(false);
+    setValue(emptyItem);
   };
 
   const changeOrderHandler = ({ id, amount }: OrderPayload) => {
@@ -87,27 +114,39 @@ const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
           ))}
         </List>
         {addNewVisible && (
-          <EditItem onSuccess={addOrder} onCancel={hideAddNew} />
+          <EditItem
+            name={value ? value[1].name : ""}
+            onSuccess={addOrder}
+            onCancel={hideAddNew}
+          />
         )}
         {!addNewVisible && (
-          <StyledTextField
-            select
-            id="order"
-            value="undefined"
-            onChange={selectHandler}
-            size="small"
-          >
-            <MenuItem value="undefined" disabled hidden>
-              Add Item
-            </MenuItem>
-
-            {availableOrders.map(([id, { name }]) => (
-              <MenuItem key={id} value={id}>
-                {name}
-              </MenuItem>
-            ))}
-            <MenuItem value="add">Add New</MenuItem>
-          </StyledTextField>
+          <FormControl fullWidth>
+            <Autocomplete
+              disablePortal
+              selectOnFocus
+              clearOnBlur
+              handleHomeEndKeys
+              value={value}
+              onChange={handleChange}
+              options={availableOrders}
+              getOptionLabel={order => {
+                if (order[0].startsWith("Add ")) return order[0];
+                else return order[1].name;
+              }}
+              filterOptions={(options, state) => {
+                const filtered = filter(options, state);
+                if (state.inputValue !== "") {
+                  filtered.push([
+                    `Add "${state.inputValue}"`,
+                    { name: state.inputValue, price: 0 },
+                  ]);
+                }
+                return filtered;
+              }}
+              renderInput={params => <TextField {...params} label="Add Item" />}
+            />
+          </FormControl>
         )}
       </Stack>
     </Fieldset>
