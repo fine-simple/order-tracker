@@ -17,15 +17,17 @@ const Person: FC<IProps> = ({ id, name = "", orders = {}, ...props }) => {
   const [editVisible, setEditVisible] = useState(false);
   const items = useSelector(state => state.items);
   const tax = useSelector(state => state.shared.tax);
-
+  const expenses = useSelector(state => state.shared.expenses);
+  const personCount = useSelector(state => Object.keys(state.persons).length);
   const getTotalPrice = useMemo(
     () =>
       Object.entries(orders).reduce(
         (acc, [id, amount]) => acc + amount * items[id].price,
         0
       ) *
-      (1 + tax),
-    [orders, items, tax]
+        (1 + tax) +
+      (expenses / personCount || 0),
+    [orders, items, tax, expenses, personCount]
   );
 
   const editClickedHandler = () => {
