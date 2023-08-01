@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addItem } from "../ts/reducers/itemSlice/itemSlice";
 import { useDispatch } from "../ts/hooks/redux";
 import { FC } from "react";
@@ -22,8 +22,13 @@ const EditItem: FC<IEditItemProps> = ({
   price: defaultPrice = 0,
 }) => {
   const dispatch = useDispatch();
+  const priceRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState<string>(defaultName);
   const [price, setPrice] = useState<number>(defaultPrice);
+
+  useEffect(() => {
+    priceRef.current?.focus();
+  }, []);
 
   const addHandler = async () => {
     // validate input
@@ -46,55 +51,54 @@ const EditItem: FC<IEditItemProps> = ({
   };
 
   return (
-    <form autoComplete="off">
-      <Grid
-        container
-        gap={2}
-        justifyContent="center"
-        flexDirection="column"
-        padding="1rem"
-      >
-        <TextField
-          label="Name"
-          size="small"
-          autoComplete="off"
-          autoCapitalize="on"
-          defaultValue={defaultName}
-          onChange={e => setName(e.target.value)}
-        />
-        <TextField
-          autoFocus
-          label="Price"
-          size="small"
-          type="number"
-          defaultValue={defaultPrice}
-          onChange={e => setPrice(Number(e.target.value))}
-        />
-        <Grid container justifyContent="center">
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={addHandler}
-            color="primary"
-            type="submit"
-          >
-            <CheckIcon />
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={cancelHandler}
-            color="error"
-          >
-            <CancelIcon />
-          </IconButton>
-        </Grid>
+    <Grid
+      container
+      gap={2}
+      justifyContent="center"
+      flexDirection="column"
+      padding="1rem"
+    >
+      <TextField
+        label="Name"
+        size="small"
+        autoComplete="off"
+        autoCapitalize="on"
+        defaultValue={defaultName}
+        onChange={e => setName(e.target.value)}
+      />
+      <TextField
+        label="Price"
+        size="small"
+        type="number"
+        ref={priceRef}
+        autoFocus
+        defaultValue={defaultPrice}
+        onChange={e => setPrice(Number(e.target.value))}
+      />
+      <Grid container justifyContent="center">
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={addHandler}
+          color="primary"
+          type="submit"
+        >
+          <CheckIcon />
+        </IconButton>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={cancelHandler}
+          color="error"
+        >
+          <CancelIcon />
+        </IconButton>
       </Grid>
-    </form>
+    </Grid>
   );
 };
 

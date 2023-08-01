@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch } from "../ts/hooks/redux";
 import {
   addPerson,
@@ -27,15 +27,22 @@ const AddModify: FC<IAddModifyProps> = ({
   const [orders, setOrders] = useState<Items>({
     ...savedOrders,
   });
+
+  const nameRef = useRef<HTMLInputElement>(null);
+
   const [name, setName] = useState<string>(defaultName);
   const [sureDialog, setSureDialog] = useState<boolean>(false);
+
+  useEffect(() => {
+    nameRef.current?.focus();
+  }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // validate input
     if (name.trim().length === 0) {
-      alert("Please add a Name");
+      nameRef.current?.focus();
       return;
     }
 
@@ -64,6 +71,7 @@ const AddModify: FC<IAddModifyProps> = ({
         alignItems={"center"}
       >
         <TextField
+          type="text"
           label="Name"
           value={name}
           autoComplete="off"
@@ -72,6 +80,7 @@ const AddModify: FC<IAddModifyProps> = ({
           onChange={e => setName(e.target.value)}
           size="small"
           autoFocus
+          ref={nameRef}
         />
         <OrdersEditor orders={orders} setOrders={setOrders} />
         <Grid container justifyContent="center">
