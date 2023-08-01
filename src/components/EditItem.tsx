@@ -63,6 +63,7 @@ const EditItem: FC<IEditItemProps> = ({
           onChange={e => setName(e.target.value)}
         />
         <TextField
+          autoFocus
           label="Price"
           size="small"
           type="number"
