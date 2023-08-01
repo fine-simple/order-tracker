@@ -127,6 +127,7 @@ const OrdersEditor: FC<IOrdersEditorProps> = ({ orders, setOrders }) => {
               selectOnFocus
               clearOnBlur
               handleHomeEndKeys
+              autoSelect
               value={value}
               onChange={handleChange}
               options={availableOrders}

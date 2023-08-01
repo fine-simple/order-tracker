@@ -71,6 +71,7 @@ const AddModify: FC<IAddModifyProps> = ({
           required
           onChange={e => setName(e.target.value)}
           size="small"
+          autoFocus
         />
         <OrdersEditor orders={orders} setOrders={setOrders} />
         <Grid container justifyContent="center">
