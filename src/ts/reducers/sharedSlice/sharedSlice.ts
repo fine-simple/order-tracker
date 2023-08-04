@@ -12,7 +12,7 @@ import { clearAll, loadFromLocalStorage } from "../../actions";
 
 const initialState: Shared = {
   tax: 0,
-  tip: 0,
+  expenses: 0,
   discount: 0,
   shared: [],
 };
@@ -38,8 +38,8 @@ const sharedSlice = createSlice({
     setTax(state, action: SetTaxAction) {
       state.tax = action.payload;
     },
-    setTip(state, action: SetTipAction) {
-      state.tip = action.payload;
+    setExpenses(state, action: SetTipAction) {
+      state.expenses = action.payload;
     },
     setDiscount(state, action: SetDiscountAction) {
       state.discount = action.payload;
@@ -61,7 +61,7 @@ export const {
   decreaseSharedItem,
   increaseSharedItem,
   setTax,
-  setTip,
+  setExpenses,
   setDiscount,
 } = sharedSlice.actions;
 

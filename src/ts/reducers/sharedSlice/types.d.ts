@@ -2,7 +2,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export type Shared = {
   tax: number;
-  tip: number;
+  expenses: number;
   discount: number;
   shared: number[];
 };

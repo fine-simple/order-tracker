@@ -1,7 +1,7 @@
-import { useId, useMemo } from "react";
+import { useCallback, useId, useMemo } from "react";
 import type { ChangeEvent } from "react";
 import { useSelector, useDispatch } from "../ts/hooks/redux";
-import { setTax } from "../ts/reducers/sharedSlice/sharedSlice";
+import { setTax, setExpenses } from "../ts/reducers/sharedSlice/sharedSlice";
 import {
   Card,
   CardContent,
@@ -15,10 +15,19 @@ const Summary: FC = () => {
   const dispatch = useDispatch();
 
   const taxInputId = useId();
+  const expensesInputId = useId();
   const tax = useSelector(state => state.shared.tax);
   const persons = useSelector(state => state.persons);
   const availableItems = useSelector(state => state.items);
-  const changeTax = (tax: number) => dispatch(setTax(tax));
+  const changeTax = useCallback(
+    (tax: number) => dispatch(setTax(tax)),
+    [dispatch]
+  );
+  const expenses = useSelector(state => state.shared.expenses);
+  const changeExpenses = useCallback(
+    (expenses: number) => dispatch(setExpenses(expenses)),
+    [dispatch]
+  );
 
   const subTotal = useMemo(
     () =>
@@ -33,10 +42,21 @@ const Summary: FC = () => {
     [persons, availableItems]
   );
 
-  const taxChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value) || 0;
-    changeTax(value / 100);
-  };
+  const taxChangeHandler = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const value = parseFloat(e.target.value) || 0;
+      changeTax(value / 100);
+    },
+    [changeTax]
+  );
+
+  const changeExpensesHandler = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const value = parseFloat(e.target.value) || 0;
+      changeExpenses(value);
+    },
+    [changeExpenses]
+  );
 
   const total = useMemo(() => subTotal * (1 + tax), [subTotal, tax]);
 
@@ -52,8 +72,18 @@ const Summary: FC = () => {
           label="Tax"
           placeholder="e.g. 14%"
           type="number"
-          value={(tax * 100).toFixed(0)}
+          value={(tax && (tax * 100).toFixed(0)) || ""}
           onChange={taxChangeHandler}
+        />
+      </CardContent>
+      <CardContent>
+        <TextField
+          id={expensesInputId}
+          label="Expenses"
+          placeholder="e.g. 10"
+          type="number"
+          value={expenses || ""}
+          onChange={changeExpensesHandler}
         />
       </CardContent>
       <CardContent>
