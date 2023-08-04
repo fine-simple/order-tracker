@@ -8,8 +8,8 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: "Group Order",
-        short_name: "Group Order",
+        name: "Order Tracker",
+        short_name: "Order Tracker",
         theme_color: "#ee6c13",
         background_color: "#121212",
         icons: [
@@ -20,7 +20,7 @@ export default defineConfig({
           },
         ],
         description:
-          "A simple web application that allows users to create orders for making group order easier.",
+          "A simple web application that allows users to create orders, calculate individual total costs, and evenly distribute taxes and expenses for accurate cost sharing.",
         display: "standalone",
         lang: "en",
         orientation: "portrait",
