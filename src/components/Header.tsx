@@ -40,7 +40,7 @@ const Header: FC = () => {
       />
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">Group Order</Typography>
+          <Typography variant="h6">Order Tracker</Typography>
           <Button onClick={handleClearAll} color="error">
             Clear All
           </Button>
