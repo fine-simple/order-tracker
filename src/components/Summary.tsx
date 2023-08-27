@@ -58,7 +58,7 @@ const Summary: FC = () => {
     [changeExpenses]
   );
 
-  const total = useMemo(() => subTotal * (1 + tax), [subTotal, tax]);
+  const total = useMemo(() => subTotal * (1 + tax) + expenses, [subTotal, tax, expenses]);
 
   return (
     <Card>
